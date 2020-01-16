@@ -1,19 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
-import PropTypes from 'prop-types'
 
 const Title = styled.h1`
   color: red;
 `
 
-const Home = ({content,}) => {
+const Home = () => {
   return (
-    <Title> {content}</Title>
+    <>
+      <Title> Hello World</Title>
+    </>
   )
-}
-
-Home.propTypes = {
-  type: PropTypes.string,
 }
 
 export default Home

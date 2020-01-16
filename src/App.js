@@ -14,7 +14,7 @@ function App() {
 
       <Switch>
         <Route exact path="/">
-          <Home content="test" />
+          <Home />
         </Route>
       </Switch>
     </Router>
