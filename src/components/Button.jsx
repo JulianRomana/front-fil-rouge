@@ -8,22 +8,26 @@ const Button = ({reversed, content,}) => {
     padding: 0 .8rem;
     min-width: 19rem;
     height: 4.5rem;
-    background-color: ${reversed ? '#20E3B2' : '#FFFFFF'};
-    color: ${reversed ? '#FFFFFF' : 'black'};
     font-size: 1.8rem;
-    border: solid 1px ${reversed ? 'none' : '#000'};
     border-radius: 5px;
     text-transform: uppercase;
-`
+    cursor: pointer;
+  `
+
+  const ConditionalButton = styled(StyledButton)`
+    background-color: ${reversed ? '#20E3B2' : '#FFFFFF'};
+    color: ${reversed ? '#FFFFFF' : 'black'};
+    border: solid 1px ${reversed ? 'none' : '#000'};
+  `
 
   return (
-    <StyledButton>
+    <ConditionalButton>
       { content }
-    </StyledButton>
+    </ConditionalButton>
   )
 }
 
-Button.propType = {
+Button.propTypes = {
   reversed: PropTypes.bool,
   content: PropTypes.string,
 }

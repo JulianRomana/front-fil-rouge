@@ -16,6 +16,7 @@
     "array-bracket-spacing": [2, "always"],
     "react/jsx-indent": [2, 2],
     "semi": [2, "never"],
+    "eol-last": [2, "always"],
     "max-len": [2, 120, {
       "ignoreStrings": true,
       "ignoreTemplateLiterals": true,
