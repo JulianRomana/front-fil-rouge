@@ -17,7 +17,7 @@ const SplashScreen = () => {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0 1.5rem 4rem;
+    padding: 3.5rem 1.5rem 3rem;
   `
 
   const Contents = styled.div`
@@ -25,13 +25,13 @@ const SplashScreen = () => {
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    font-family: 'Sf-Pro-Display';
+    margin-bottom: 3rem;
     color: white;
   `
 
   const Logo = styled.img`
     margin-bottom: 2.5rem;
-    width: 25rem;
+    width: 23rem;
   `
 
   const Title = styled.h1`
@@ -44,11 +44,10 @@ const SplashScreen = () => {
   `
 
   const SecondSubtitle = styled.h3`
-    margin-bottom: 25px;
+    margin-bottom: 1.5rem;
   `
 
   const Excergue = styled.p`
-    margin-bottom: 3rem;
     font-size: 1.7rem;
 
     @media (min-width: 400px) {
@@ -65,7 +64,7 @@ const SplashScreen = () => {
           <SecondSubtitle>Agissez afin de rendre<br></br>Paris meilleur</SecondSubtitle>
           <Excergue>Commencez dès maintenant !</Excergue>
         </Contents>
-        <Button content="COMMENCER"/>
+        <Button outline={false} content="COMMENCER"/>
       </Wrapper>
     </Main>
   )

@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-const Button = ({reversed, content,}) => {
+const Button = ({reversed, content,outline,}) => {
 
   const StyledButton = styled.button`
     padding: 1rem .8rem;
@@ -17,7 +17,7 @@ const Button = ({reversed, content,}) => {
   const ConditionalButton = styled(StyledButton)`
     background-color: ${reversed ? '#20E3B2' : '#FFFFFF'};
     color: ${reversed ? '#FFFFFF' : 'black'};
-    border: solid 1px ${reversed ? 'none' : '#000'};
+    border: solid 1px ${reversed || !outline ? 'none' : '#000'};
   `
 
   return (
@@ -30,6 +30,7 @@ const Button = ({reversed, content,}) => {
 Button.propTypes = {
   reversed: PropTypes.bool,
   content: PropTypes.string,
+  outline: PropTypes.bool,
 }
 
 export default Button

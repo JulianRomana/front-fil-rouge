@@ -6,6 +6,7 @@ import home from '../assets/images/home.svg'
 const Header = ({children,}) => {
 
   const Wrapper = styled.header`
+    position: fixed;
     display: flex;
     justify-content: space-between;
   `
