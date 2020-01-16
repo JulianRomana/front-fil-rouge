@@ -5,12 +5,14 @@ const Title = styled.h1`
   color: red;
 `
 
-const array = [ '1',2, ]
-
-const Home = () => {
+const Home = ({content,}) => {
   return (
-    <Title> Hello World</Title>
+    <Title> {content}</Title>
   )
+}
+
+Home.propTypes = {
+  content: String,
 }
 
 export default Home
