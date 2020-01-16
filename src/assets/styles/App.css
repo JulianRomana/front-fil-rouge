@@ -1,5 +1,6 @@
 @import './reset.css';
 @import './fonts.css';
+@import './designSystem.css';
 
 body {
   font-family: 'Sf-Pro-Display', Arial, Helvetica, sans-serif;

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 const Button = ({reversed, content,}) => {
 
   const StyledButton = styled.button`
-    padding: 0 .8rem;
+    padding: 1rem .8rem;
     min-width: 19rem;
     height: 4.5rem;
     font-size: 1.8rem;
