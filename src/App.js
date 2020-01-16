@@ -6,7 +6,8 @@ import {
   Route,
 } from "react-router-dom"
 
-import Home from './pages/Home'
+//import Home from './pages/Home'
+import Start from './pages/Start';
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
 
       <Switch>
         <Route exact path="/">
-          <Home content="test" />
+          <Start/>
         </Route>
       </Switch>
     </Router>
