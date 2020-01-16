@@ -7,7 +7,7 @@ import {
 } from "react-router-dom"
 
 //import Home from './pages/Home'
-import Start from './pages/Start'
+import SplashScreen from './pages/SplashScreen'
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
 
       <Switch>
         <Route exact path="/">
-          <Start/>
+          <SplashScreen/>
         </Route>
       </Switch>
     </Router>
