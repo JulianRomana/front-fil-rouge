@@ -1,19 +1,18 @@
 import React from 'react'
 import styled from 'styled-components'
-import PropTypes from 'prop-types'
+import Button from '../components/Button'
 
 const Title = styled.h1`
   color: red;
 `
 
-const Home = ({content,}) => {
+const Home = () => {
   return (
-    <Title> {content}</Title>
+    <>
+      <Title> Hello World</Title>
+      <Button content="Ajouter a mes quêtes de mort"/>
+    </>
   )
-}
-
-Home.propTypes = {
-  type: PropTypes.string,
 }
 
 export default Home
