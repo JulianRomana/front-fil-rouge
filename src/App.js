@@ -6,13 +6,13 @@ import {
   Route,
 } from "react-router-dom"
 
-//import Home from './pages/Home'
 import SplashScreen from './pages/SplashScreen'
+import Header from './modules/Header'
 
 function App() {
   return (
     <Router>
-
+      <Header></Header>
       <Switch>
         <Route exact path="/">
           <SplashScreen/>
