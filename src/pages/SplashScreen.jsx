@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import logo from '../assets/svg/logo.svg'
+import logo from '../assets/images/illustrations/splashScreen.svg'
 import Button from '../components/Button'
 
 const SplashScreen = () => {

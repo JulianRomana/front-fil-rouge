@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import backButton from '../assets/images/backButton.svg'
-import home from '../assets/images/home.svg'
+import backButton from '../assets/images/icons/backButton.svg'
+import home from '../assets/images/icons/home.svg'
 
 const Header = ({children,}) => {
 
