@@ -1,4 +1,8 @@
-{
+{ 
+  "env": {
+    "browser": true,
+    "node": true
+  },
   "root": true,
   "extends": ["eslint:recommended", "plugin:react/recommended"],
   "parserOptions": {
@@ -21,7 +25,13 @@
       "ignoreStrings": true,
       "ignoreTemplateLiterals": true,
       "ignoreComments": true
-    }]
+    }],
+    "no-console": [
+      "error", 
+      { 
+        "allow": ["warn", "error", "log"] 
+      }
+    ]
   },
   "settings": {
     "react": {

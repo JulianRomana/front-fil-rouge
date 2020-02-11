@@ -8,7 +8,7 @@ const axiosGet = async (url, params) => {
       },
       params,
     })
-    return data
+    return 
   }
   return getData()
 }

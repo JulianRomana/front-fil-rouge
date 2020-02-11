@@ -12,7 +12,7 @@ import Header from './modules/Header'
 function App() {
   return (
     <Router>
-      <Header></Header>
+      <Header />
       <Switch>
         <Route exact path="/">
           <SplashScreen/>
