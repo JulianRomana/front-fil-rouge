@@ -6,16 +6,17 @@
   "root": true,
   "extends": ["eslint:recommended", "plugin:react/recommended"],
   "parserOptions": {
-    "ecmaVersion": 6,
+    "ecmaVersion": 8,
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
     }
   },
   "rules": {
+    "no-unused-vars": 0,
     "react/jsx-uses-vars": "error",
     "react/boolean-prop-naming": "error",
-    "comma-dangle": [2, "always", "always-multiline"],
+    "comma-dangle": [2, "always-multiline"],
     "react/no-array-index-key": "error",
     "array-bracket-spacing": [2, "always"],
     "react/jsx-indent": [2, 2],
@@ -49,5 +50,6 @@
       "Hyperlink",
       {"name": "Link", "linkAttribute": "to"}
     ]
-  }
+  },
+  "plugins": ["prettier"]
 }

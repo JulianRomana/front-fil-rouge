@@ -4,13 +4,8 @@ import backButton from '../assets/images/icons/backButton.svg'
 import home from '../assets/images/icons/home.svg'
 import menu from '../assets/images/icons/menu.svg'
 import PropTypes from 'prop-types'
-import { axiosGet, } from '../lib/axios'
 
-const Header = ({hasNav, hasMenu,}) => {
-  (async () => {
-    const bite = await axiosGet('users')
-    console.log(bite)
-  })()
+const Header = ({hasNav, hasMenu}) => {
 
   const showMenu = () => {
     if (hasMenu) {

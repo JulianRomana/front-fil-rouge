@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-const Button = ({reversed, content,}) => {
+const Button = ({reversed, content}) => {
 
   const StyledButton = styled.button`
     padding: 1rem .8rem;
