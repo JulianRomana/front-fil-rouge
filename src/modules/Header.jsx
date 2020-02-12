@@ -56,7 +56,7 @@ const Header = ({ hasNav, hasMenu }) => {
 Header.propTypes = {
   hasBackButton: PropTypes.bool,
   hasNav: PropTypes.bool,
-  hasMenu: PropTypes.bool,
+  hasMenu: PropTypes.bool
 }
 
 export default Header

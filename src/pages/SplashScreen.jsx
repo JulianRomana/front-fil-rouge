@@ -8,7 +8,7 @@ import {
   Logo,
   Title,
   SecondSubtitle,
-  Skip,
+  Skip
 } from "./pagesStyle/SplashScreenStyle"
 
 const SplashScreen = () => {
