@@ -1,6 +1,5 @@
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
-
+import styled from "styled-components"
+import { Link } from "react-router-dom"
 
 const Main = styled.main`
   height: 100vh;
@@ -51,12 +50,4 @@ const Skip = styled(Link)`
   cursor: pointer;
 `
 
-export {
-  Main,
-  Wrapper,
-  Contents,
-  Logo, 
-  Title,
-  SecondSubtitle,
-  Skip,
-}
+export { Main, Wrapper, Contents, Logo, Title, SecondSubtitle, Skip }

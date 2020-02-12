@@ -1,6 +1,6 @@
-import React from 'react'
-import Button from '../components/Button/Button.jsx'
-import Input from '../components/Input/Input.jsx'
+import React from "react"
+import Button from "../components/Button/Button.jsx"
+import Input from "../components/Input/Input.jsx"
 
 import {
   Title,
@@ -9,16 +9,15 @@ import {
   Form,
   Signin,
   InputsWrapper,
-  SignInLink,
-} from './pagesStyle/SignupStyle'
+  SignInLink
+} from "./pagesStyle/SignupStyle"
 
 const Signup = () => {
-
-  const submitForm = (e) => {
+  const submitForm = e => {
     e.preventDefault()
   }
-  
-  return ( 
+
+  return (
     <Wrapper>
       <Title>Créer mon compte.</Title>
       <Subtitle>Plein de features vous attends</Subtitle>
@@ -27,15 +26,17 @@ const Signup = () => {
           <Input logo="label" label="Saisir mon nom" type="text"></Input>
           <Input logo="label" label="Saisir mon prenom" type="text"></Input>
           <Input logo="email" label="Saisir e-mail" type="email"></Input>
-          <Input logo="email" label="Saisir mon mot de passe" type="password"></Input>
+          <Input
+            logo="email"
+            label="Saisir mon mot de passe"
+            type="password"
+          ></Input>
         </InputsWrapper>
         <Signin>
-          Vous avez un compte ?
-          <SignInLink to="login">Me connecter</SignInLink>
+          Vous avez un compte ?<SignInLink to="login">Me connecter</SignInLink>
         </Signin>
         <Button reversed content="S'inscrire" />
       </Form>
-
     </Wrapper>
   )
 }

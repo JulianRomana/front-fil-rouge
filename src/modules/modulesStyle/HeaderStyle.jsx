@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components"
 
 const IconsWrapper = styled.div`
   display: grid;
@@ -19,9 +19,4 @@ const Menu = styled.div`
   width: 3.3rem;
 `
 
-export {
-  IconsWrapper,
-  BackIcon,
-  HomeIcon,
-  Menu,
-}
+export { IconsWrapper, BackIcon, HomeIcon, Menu }
