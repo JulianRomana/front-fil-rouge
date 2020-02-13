@@ -7,6 +7,7 @@ import {
 } from "react-router-dom"
 
 import SplashScreen from './pages/SplashScreen'
+import Signup from './pages/Signup'
 import Header from './modules/Header'
 
 function App() {
@@ -14,9 +15,8 @@ function App() {
     <Router>
       <Header />
       <Switch>
-        <Route exact path="/">
-          <SplashScreen/>
-        </Route>
+        <Route exact path="/" component={SplashScreen}/>
+        <Route exact path="/signup" component={Signup}/>
       </Switch>
     </Router>
   )
