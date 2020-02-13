@@ -11,6 +11,8 @@ const getLogo = (logoName) => {
       return email
     case 'label':
       return label
+    default: 
+    return null
   }
 }
 

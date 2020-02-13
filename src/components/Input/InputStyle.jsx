@@ -11,6 +11,7 @@ const Img = styled.img`
   left: 30px;
   width: 20px;
   pointer-events: none; 
+  user-select: none;
 `
 const Input = styled.input`
   width: 100%;
@@ -29,6 +30,7 @@ const Label = styled.label`
   left: 70px;
   color: #d9d9d9;
   pointer-events: none;
+  user-select: none;
 `
 
 export {
