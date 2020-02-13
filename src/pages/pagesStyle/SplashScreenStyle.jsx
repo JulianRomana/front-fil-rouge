@@ -1,61 +1,62 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
+
 
 const Main = styled.main`
-    height: 100vh;
-    background-color: #20e3b2;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  `
-  
-  const Wrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 3.5rem 1.5rem 3rem;
-  `
+  height: 100vh;
+  background-color: #1b9a5a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
 
-  const Contents = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    margin-bottom: 3rem;
-    color: white;
-  `
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3.5rem 1.5rem 3rem;
+`
 
-  const Logo = styled.img`
-    margin-bottom: 2.5rem;
-    width: 23rem;
-  `
+const Contents = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin-bottom: 3rem;
+  color: white;
+`
 
-  const Title = styled.h1`
-    margin-bottom: 1.5rem;
-    font-size: 3rem;
+const Logo = styled.img`
+  margin-bottom: 2.5rem;
+  width: 23rem;
+`
 
-    @media (min-width: 400px) {
-      font-size: 4rem;
-    }
-  `
+const Title = styled.h1`
+  margin-bottom: 1.5rem;
+  font-size: 3rem;
 
-  const SecondSubtitle = styled.h3`
-    margin-bottom: 1.5rem;
-  `
+  @media (min-width: 400px) {
+    font-size: 4rem;
+  }
+`
 
-  const StartParagraph = styled.p`
-    font-size: 1.7rem;
+const SecondSubtitle = styled.h3`
+  margin-bottom: 1.5rem;
+`
 
-    @media (min-width: 400px) {
-      margin-bottom: 7.5rem;
-    }
-  `
+const Skip = styled(Link)`
+  margin-top: 1.5rem;
+  color: #ffffff;
+  text-decoration: underline;
+  cursor: pointer;
+`
 
 export {
   Main,
   Wrapper,
   Contents,
-  Logo,
+  Logo, 
   Title,
   SecondSubtitle,
-  StartParagraph,
+  Skip,
 }
