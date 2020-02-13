@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components"
 
 const Wrapper = styled.div`
   position: relative;
@@ -10,7 +10,7 @@ const Img = styled.img`
   top: 20px;
   left: 30px;
   width: 20px;
-  pointer-events: none; 
+  pointer-events: none;
   user-select: none;
 `
 const Input = styled.input`
@@ -33,9 +33,4 @@ const Label = styled.label`
   user-select: none;
 `
 
-export {
-  Wrapper,
-  Img,
-  Input,
-  Label,
-}
+export { Wrapper, Img, Input, Label }

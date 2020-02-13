@@ -22,7 +22,7 @@
     "react/jsx-uses-vars": "error",
     "react/boolean-prop-naming": "error",
     "react/no-array-index-key": "error",
-    "array-bracket-spacing": [2, "always"],
+    // "array-bracket-spacing": [2, "always"],
     "react/jsx-indent": [2, 2],
     "semi": [2, "never"],
     "eol-last": [2, "always"],
