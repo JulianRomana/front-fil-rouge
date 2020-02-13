@@ -1,8 +1,8 @@
 import React, { useState, useRef } from "react"
 import propTypes from "prop-types"
 import { Wrapper, Img, Input, Label } from "./InputStyle"
-import email from "../../assets/images/icons/email.svg"
-import label from "../../assets/images/icons/label.svg"
+import email from "../../assets/images/email.svg"
+import label from "../../assets/images/label.svg"
 import { CSSTransition } from "react-transition-group"
 
 const getLogo = logoName => {

@@ -2,12 +2,15 @@
   opacity: 1;
   transition: opacity 300ms;
 }
+
 .fade-out-enter-active {
   opacity: 0;
 }
+
 .fade-out-exit {
   opacity: 0;
 }
+
 .fade-out-exit-active {
   opacity: 1;
   transition: opacity 300ms;

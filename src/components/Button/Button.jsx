@@ -1,20 +1,30 @@
 import React from "react"
-import styled from "styled-components"
 import PropTypes from "prop-types"
 import { StyledButton } from "./ButtonStyle"
 
-const Button = ({ reversed, content }) => {
-  const ConditionalButton = styled(StyledButton)`
-    background-color: ${reversed ? "#1b9a5a" : "#ffffff"};
-    color: ${reversed ? "#ffffff" : "#000000"};
-  `
-
-  return <ConditionalButton>{content}</ConditionalButton>
+const Button = ({ content, ...props }) => {
+  return (
+    <div
+      className={`button
+        ${props.white ? "button--white" : ""}
+        ${props.green ? "button--green" : ""}
+        ${props.red ? "button--red" : ""}
+        ${props.full ? "button--full" : ""}
+      `}
+      style={{ margin: props.margin }}
+    >
+      {content}
+    </div>
+  )
 }
 
 Button.propTypes = {
-  reversed: PropTypes.bool,
   content: PropTypes.string,
+  white: PropTypes.bool,
+  green: PropTypes.bool,
+  red: PropTypes.bool,
+  full: PropTypes.bool,
+  margin: PropTypes.string,
 }
 
 export default Button

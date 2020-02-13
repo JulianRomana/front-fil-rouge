@@ -1,5 +1,5 @@
 import React from "react"
-import logo from "../assets/images/illustrations/splashScreen.svg"
+import logo from "../assets/images/splash-screen.svg"
 import Button from "../components/Button/Button.jsx"
 import {
   Main,

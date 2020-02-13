@@ -1,62 +1,47 @@
 import React from "react"
+import { useLocation, useHistory } from "react-router-dom"
 import styled from "styled-components"
-import backButton from "../assets/images/icons/backButton.svg"
-import home from "../assets/images/icons/home.svg"
-import menu from "../assets/images/icons/menu.svg"
+import BackHome from "../assets/images/back-button.svg"
 import PropTypes from "prop-types"
-import {
-  IconsWrapper,
-  BackIcon,
-  HomeIcon,
-  Menu,
-} from "./modulesStyle/HeaderStyle"
+import { IconsWrapper, BackIcon, Menu } from "./modulesStyle/HeaderStyle"
 
-const Header = ({ hasNav, hasMenu }) => {
-  const setSpacing = () => {
-    if (hasMenu && !hasNav) return "flex-end"
-    else if (!hasMenu && hasNav) return "space-between"
-    else if (hasMenu && hasNav) return "space-between"
-  }
+const Header = () => {
+  const { goBack } = useHistory()
+  const { pathname } = useLocation()
 
-  const showMenu = () => {
-    if (hasMenu) {
-      return (
-        <Menu>
-          <img src={menu} alt="Menu" />
-        </Menu>
-      )
+  const checkLocation = () => {
+    if (pathname === "/" || pathname === "/dashboard") {
+      return "hidden"
+    } else {
+      return "visible"
     }
   }
 
-  const showNav = () => {
-    if (hasNav) {
-      return (
-        <>
-          <BackIcon>
-            <img src={backButton} alt="backButton" />
-          </BackIcon>
-          <HomeIcon>
-            <img src={home} alt="home" />
-          </HomeIcon>
-        </>
-      )
-    }
-  }
+  const BackIcon = styled.div`
+    visibility: ${checkLocation()};
+    cursor: pointer;
 
-  const Wrapper = styled.header`
-    position: fixed;
-    display: flex;
-    justify-content: ${setSpacing()};
-    width: 100%;
-    padding: 1rem 1.5rem;
+    img {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
   `
-  return <Wrapper>{showMenu()}</Wrapper>
+
+  return (
+    <IconsWrapper>
+      <BackIcon onClick={() => goBack()}>
+        <img src={BackHome} alt="Back Icon" />
+      </BackIcon>
+      <Menu>Menu</Menu>
+    </IconsWrapper>
+  )
 }
 
 Header.propTypes = {
   hasBackButton: PropTypes.bool,
   hasNav: PropTypes.bool,
   hasMenu: PropTypes.bool,
+  location: PropTypes.string,
 }
 
 export default Header

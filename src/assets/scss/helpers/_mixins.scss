@@ -1,0 +1,15 @@
+@mixin breakpoint($size) {
+  $size: map-get($screens, $size);
+
+  @if $size {
+    $breakpoint: if(type-of($size)=='string', unquote($size), inspect($size));
+
+    @media (min-width: $breakpoint) {
+      @content;
+    }
+  }
+
+  @else {
+    @error 'No value found for that size';
+  }
+}

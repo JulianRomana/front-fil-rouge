@@ -10,7 +10,7 @@
     "plugin:prettier/recommended"
   ],
   "parserOptions": {
-    "ecmaVersion": 8,
+    "ecmaVersion": 2018,
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
@@ -21,7 +21,7 @@
     "no-unused-vars": 0,
     "react/jsx-uses-vars": "error",
     "react/boolean-prop-naming": "error",
-    "react/no-array-index-key": "error",
+    // "react/no-array-index-key": "error",
     // "array-bracket-spacing": [2, "always"],
     "react/jsx-indent": [2, 2],
     "semi": [2, "never"],
