@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import styled from "styled-components"
+import { Link } from "react-router-dom"
 
 const Wrapper = styled.section`
   height: 100vh;
@@ -42,12 +42,4 @@ const SignInLink = styled(Link)`
   color: #000000;
 `
 
-export {
-  Wrapper,
-  Title,
-  Subtitle,
-  Form,
-  InputsWrapper,
-  Signin,
-  SignInLink,
-}
+export { Wrapper, Title, Subtitle, Form, InputsWrapper, Signin, SignInLink }

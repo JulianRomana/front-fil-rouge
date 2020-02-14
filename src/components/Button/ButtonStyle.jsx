@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components"
 
 const StyledButton = styled.button`
   padding: 1rem 2rem;
@@ -8,6 +8,4 @@ const StyledButton = styled.button`
   cursor: pointer;
 `
 
-export {
-  StyledButton,
-}
+export { StyledButton }

@@ -1,10 +1,14 @@
-{ 
+{
   "env": {
     "browser": true,
     "node": true
   },
   "root": true,
-  "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended"
+  ],
   "parserOptions": {
     "ecmaVersion": 8,
     "sourceType": "module",
@@ -13,43 +17,51 @@
     }
   },
   "rules": {
+    "prettier/prettier": "error",
     "no-unused-vars": 0,
     "react/jsx-uses-vars": "error",
     "react/boolean-prop-naming": "error",
-    "comma-dangle": [2, "always-multiline"],
     "react/no-array-index-key": "error",
-    "array-bracket-spacing": [2, "always"],
+    // "array-bracket-spacing": [2, "always"],
     "react/jsx-indent": [2, 2],
     "semi": [2, "never"],
     "eol-last": [2, "always"],
-    "max-len": [2, 120, {
-      "ignoreStrings": true,
-      "ignoreTemplateLiterals": true,
-      "ignoreComments": true
-    }],
+    "max-len": [
+      2,
+      120,
+      {
+        "ignoreStrings": true,
+        "ignoreTemplateLiterals": true,
+        "ignoreComments": true
+      }
+    ],
     "no-console": [
-      "error", 
-      { 
-        "allow": ["warn", "error", "log"] 
+      "error",
+      {
+        "allow": ["warn", "error", "log"]
       }
     ]
   },
   "settings": {
     "react": {
       "createClass": "createReactClass",
-      "pragma": "React", 
+      "pragma": "React",
       "version": "detect",
       "flowVersion": "0.53"
     },
     "propWrapperFunctions": [
-        "forbidExtraProps",
-        {"property": "freeze", "object": "Object"},
-        {"property": "myFavoriteWrapper"}
+      "forbidExtraProps",
+      {
+        "property": "freeze",
+        "object": "Object"
+      },
+      {
+        "property": "myFavoriteWrapper"
+      }
     ],
-    "linkComponents": [
-      "Hyperlink",
-      {"name": "Link", "linkAttribute": "to"}
-    ]
-  },
-  "plugins": ["prettier"]
+    "linkComponents": ["Hyperlink", {
+      "name": "Link",
+      "linkAttribute": "to"
+    }]
+  }
 }

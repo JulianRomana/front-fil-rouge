@@ -1,11 +1,11 @@
-import axios from 'axios'
+import axios from "axios"
 
 const axiosGet = async (url, params) => {
   const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/${url}`, {
     headers: {
-      accept: 'application/json',
+      accept: "application/json"
     },
-    params,
+    params
   })
   return data
 }

@@ -1,36 +1,34 @@
-import React, { useState, useRef } from 'react'
-import propTypes from 'prop-types'
-import { Wrapper, Img, Input, Label } from './InputStyle'
-import email from '../../assets/images/icons/email.svg'
-import label from '../../assets/images/icons/label.svg'
-import { CSSTransition } from 'react-transition-group'
+import React, { useState, useRef } from "react"
+import propTypes from "prop-types"
+import { Wrapper, Img, Input, Label } from "./InputStyle"
+import email from "../../assets/images/icons/email.svg"
+import label from "../../assets/images/icons/label.svg"
+import { CSSTransition } from "react-transition-group"
 
-const getLogo = (logoName) => {
+const getLogo = logoName => {
   switch (logoName) {
-    case 'email':
+    case "email":
       return email
-    case 'label':
+    case "label":
       return label
-    default: 
-    return null
+    default:
+      return null
   }
 }
 
 const CustomInput = ({ type, logo, label }) => {
-  const [ focus, setFocus ] = useState(false)
+  const [focus, setFocus] = useState(false)
   const inputRef = useRef()
 
   const handleFocus = () => {
     inputRef.current.focus()
     setFocus(true)
   }
-  
+
   const handleBlur = () => {
-    const { 
-      current: {
-        value,
-      },
-      current 
+    const {
+      current: { value },
+      current,
     } = inputRef
 
     if (value) return
@@ -40,13 +38,24 @@ const CustomInput = ({ type, logo, label }) => {
 
   return (
     <Wrapper>
-      <CSSTransition mountOnEnter unmountOnExit classNames="fade-out" timeout={ 10 } in={ !focus }>
+      <CSSTransition
+        mountOnEnter
+        unmountOnExit
+        classNames="fade-out"
+        timeout={10}
+        in={!focus}
+      >
         <>
-          <Img src={ getLogo(logo) } alt="" />
-          <Label>{ label }</Label>
+          <Img src={getLogo(logo)} alt="" />
+          <Label>{label}</Label>
         </>
       </CSSTransition>
-      <Input ref={ inputRef } onBlur={ handleBlur } onFocus={ handleFocus } type={ type }/>
+      <Input
+        ref={inputRef}
+        onBlur={handleBlur}
+        onFocus={handleFocus}
+        type={type}
+      />
     </Wrapper>
   )
 }
