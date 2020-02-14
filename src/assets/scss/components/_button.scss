@@ -1,0 +1,27 @@
+.button {
+  position: relative;
+  padding: 0.8rem 1.5rem;
+  font-size: 0.8rem;
+  border-radius: 5px;
+  text-transform: uppercase;
+  text-align: center;
+
+  &--full {
+    width: 100%;
+  }
+
+  &--white {
+    background-color: map-get($colors, white);
+    color: map-get($colors, black);
+  }
+
+  &--green {
+    background-color: map-get($colors, primary);
+    color: map-get($colors, white);
+  }
+
+  &--red {
+    background-color: map-get($colors, red);
+    color: map-get($colors, white);
+  }
+}

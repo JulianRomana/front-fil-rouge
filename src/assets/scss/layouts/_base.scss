@@ -1,0 +1,46 @@
+body {
+  overflow-x: hidden;
+  font-family: "Sf-Pro-Display", sans-serif;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+h2 {
+  font-size: 1.8rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+h1 {
+  &:after {
+    content: ".";
+    color: map-get($colors, primary);
+  }
+}
+
+a {
+  text-decoration: none;
+  color: map-get($colors, black);
+}
+
+.fade-out-enter {
+  opacity: 1;
+  transition: opacity 300ms;
+}
+
+.fade-out-enter-active {
+  opacity: 0;
+}
+
+.fade-out-exit {
+  opacity: 0;
+}
+
+.fade-out-exit-active {
+  opacity: 1;
+  transition: opacity 300ms;
+}

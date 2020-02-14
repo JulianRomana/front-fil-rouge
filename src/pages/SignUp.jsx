@@ -10,6 +10,7 @@ import {
   Signin,
   InputsWrapper,
   SignInLink,
+  GuestLink,
 } from "./pagesStyle/SignupStyle"
 
 const Signup = () => {
@@ -19,23 +20,20 @@ const Signup = () => {
 
   return (
     <Wrapper>
-      <Title>Créer mon compte.</Title>
+      <Title>Créer mon compte</Title>
       <Subtitle>Plein de features vous attends</Subtitle>
       <Form onSubmit={submitForm}>
         <InputsWrapper>
-          <Input logo="label" label="Saisir mon nom" type="text"></Input>
-          <Input logo="label" label="Saisir mon prenom" type="text"></Input>
-          <Input logo="email" label="Saisir e-mail" type="email"></Input>
-          <Input
-            logo="email"
-            label="Saisir mon mot de passe"
-            type="password"
-          ></Input>
+          <Input logo="label" label="Saisir mon nom" type="text" />
+          <Input logo="label" label="Saisir mon prenom" type="text" />
+          <Input logo="email" label="Saisir e-mail" type="email" />
+          <Input logo="email" label="Saisir mon mot de passe" type="password" />
         </InputsWrapper>
         <Signin>
           Vous avez un compte ?<SignInLink to="login">Me connecter</SignInLink>
         </Signin>
-        <Button reversed content="S'inscrire" />
+        <Button green content="S'inscrire" />
+        <GuestLink to="/">Continuer en tant qu’inviter</GuestLink>
       </Form>
     </Wrapper>
   )

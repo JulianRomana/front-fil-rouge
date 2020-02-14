@@ -1,8 +1,8 @@
 import React, { useState, useRef } from "react"
 import propTypes from "prop-types"
-import { Wrapper, Img, Input, Label } from "./InputStyle"
-import email from "../../assets/images/icons/email.svg"
-import label from "../../assets/images/icons/label.svg"
+import { Wrapper, Img, Input } from "./InputStyle"
+import email from "../../assets/images/email.svg"
+import label from "../../assets/images/label.svg"
 import { CSSTransition } from "react-transition-group"
 
 const getLogo = logoName => {
@@ -45,16 +45,14 @@ const CustomInput = ({ type, logo, label }) => {
         timeout={10}
         in={!focus}
       >
-        <>
-          <Img src={getLogo(logo)} alt="" />
-          <Label>{label}</Label>
-        </>
+        <Img src={getLogo(logo)} alt="" />
       </CSSTransition>
       <Input
         ref={inputRef}
         onBlur={handleBlur}
         onFocus={handleFocus}
         type={type}
+        placeholder={label}
       />
     </Wrapper>
   )

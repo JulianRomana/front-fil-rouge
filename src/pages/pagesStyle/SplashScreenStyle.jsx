@@ -7,40 +7,40 @@ const Main = styled.main`
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 1rem;
 `
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 3.5rem 1.5rem 3rem;
+  justify-content: center;
+  height: 100%;
 `
 
 const Contents = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
-  margin-bottom: 3rem;
   color: white;
-`
-
-const Logo = styled.img`
-  margin-bottom: 2.5rem;
-  width: 23rem;
+  text-align: center;
 `
 
 const Title = styled.h1`
-  margin-bottom: 1.5rem;
-  font-size: 3rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+`
 
-  @media (min-width: 400px) {
-    font-size: 4rem;
-  }
+const Logo = styled.img`
+  max-width: 70%;
+  margin: 1rem auto 1.5rem;
 `
 
 const SecondSubtitle = styled.h3`
   margin-bottom: 1.5rem;
+  width: 80%;
+  font-size: 1.25rem;
 `
 
 const Skip = styled(Link)`
@@ -48,6 +48,7 @@ const Skip = styled(Link)`
   color: #ffffff;
   text-decoration: underline;
   cursor: pointer;
+  text-transform: uppercase;
 `
 
 export { Main, Wrapper, Contents, Logo, Title, SecondSubtitle, Skip }

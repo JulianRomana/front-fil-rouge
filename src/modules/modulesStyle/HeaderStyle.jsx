@@ -1,22 +1,15 @@
 import styled from "styled-components"
 
-const IconsWrapper = styled.div`
-  display: grid;
-  grid-gap: 2.5rem;
-  grid-auto-flow: column;
+const IconsWrapper = styled.header`
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
+  width: 100%;
+  padding: 1rem;
+  height: 5rem;
 `
 
-const BackIcon = styled.div`
-  width: 1.2rem;
-`
-
-const HomeIcon = styled.div`
-  width: 2.4rem;
-`
-
-const Menu = styled.div`
-  width: 3.3rem;
-`
-
-export { IconsWrapper, BackIcon, HomeIcon, Menu }
+export { IconsWrapper }

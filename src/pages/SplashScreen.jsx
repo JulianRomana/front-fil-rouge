@@ -1,5 +1,5 @@
 import React from "react"
-import logo from "../assets/images/illustrations/splashScreen.svg"
+import logo from "../assets/images/splash-screen.svg"
 import Button from "../components/Button/Button.jsx"
 import {
   Main,
@@ -15,17 +15,17 @@ const SplashScreen = () => {
   return (
     <Main>
       <Wrapper>
-        <Logo src={logo} alt="" />
         <Contents>
           <Title>
-            Vivez vos JO 2024 d’une autre<br></br>manière
+            Vivez vos JO 2024 <br /> d’une autre manière
           </Title>
+          <Logo src={logo} alt="" />
           <SecondSubtitle>
-            Agissez afin de rendre<br></br>Paris meilleur
+            Agissez afin de rendre Paris meilleur avec <b>Greenleaf</b>
           </SecondSubtitle>
         </Contents>
-        <Button outline={false} content="Commencez dès maintenant !" />
-        <Skip to="/signup">IGNORER</Skip>
+        <Button white full content="Commencez dès maintenant !" />
+        <Skip to="/signup">Passer</Skip>
       </Wrapper>
     </Main>
   )
