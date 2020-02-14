@@ -14,7 +14,7 @@ const Button = ({ reversed, content }) => {
 
 Button.propTypes = {
   reversed: PropTypes.bool,
-  content: PropTypes.string
+  content: PropTypes.string,
 }
 
 export default Button
