@@ -3,27 +3,33 @@ import propTypes from "prop-types"
 import { Wrapper, Img, Input } from "./InputStyle"
 import email from "../../assets/images/email.svg"
 import label from "../../assets/images/label.svg"
-import password from '../../assets/images/icons/password.svg'
+import password from "../../assets/images/icons/password.svg"
 import { CSSTransition } from "react-transition-group"
 
 const emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
-const getLogo = (logoName) => {
+const getLogo = logoName => {
   switch (logoName) {
     case "email":
       return email
     case "label":
       return label
-    case 'password':
+    case "password":
       return password
     default:
-    return null
+      return null
   }
 }
 
-
-const CustomInput = ({ name, type, logo, label, currentInputsValues, setInputValue }) => {
-  const [ focus, setFocus ] = useState(false)
-  const [ oldInputVal, setOldInputVal ] = useState(false)
+const CustomInput = ({
+  name,
+  type,
+  logo,
+  label,
+  currentInputsValues,
+  setInputValue,
+}) => {
+  const [focus, setFocus] = useState(false)
+  const [oldInputVal, setOldInputVal] = useState(false)
   const inputRef = useRef()
 
   const handleFocus = () => {
@@ -31,7 +37,7 @@ const CustomInput = ({ name, type, logo, label, currentInputsValues, setInputVal
     setFocus(true)
   }
 
-  const validateEmail = (email) => {
+  const validateEmail = email => {
     const isEmailValid = email.match(emailRegex)
     return isEmailValid && isEmailValid.length
   }
@@ -42,23 +48,21 @@ const CustomInput = ({ name, type, logo, label, currentInputsValues, setInputVal
       current,
     } = inputRef
 
-    if (value && (oldInputVal !== value)) {
-      if (current.type === 'email' && !validateEmail(value)) return
+    if (value && oldInputVal !== value) {
+      if (current.type === "email" && !validateEmail(value)) return
       const clearedData = currentInputsValues.filter(
-        userData => userData.name !== name
+        userData => userData.name !== name,
       )
-      setInputValue(
-        [
-          ...clearedData,
-          {
-            name,
-            value,
-          }
-        ]
-      )
+      setInputValue([
+        ...clearedData,
+        {
+          name,
+          value,
+        },
+      ])
       setOldInputVal(value)
       return
-    } else if ( value === oldInputVal) return
+    } else if (value === oldInputVal) return
     current.blur()
     setFocus(false)
   }
@@ -69,8 +73,8 @@ const CustomInput = ({ name, type, logo, label, currentInputsValues, setInputVal
         mountOnEnter
         unmountOnExit
         classNames="fade-out"
-        timeout={ 10 }
-        in={ !focus }
+        timeout={10}
+        in={!focus}
       >
         <Img src={getLogo(logo)} alt="" />
       </CSSTransition>
@@ -86,9 +90,12 @@ const CustomInput = ({ name, type, logo, label, currentInputsValues, setInputVal
 }
 
 CustomInput.propTypes = {
+  name: propTypes.string,
   type: propTypes.string,
   logo: propTypes.string,
   label: propTypes.string,
+  currentInputsValues: propTypes.array,
+  setInputValue: propTypes.func,
 }
 
 export default CustomInput

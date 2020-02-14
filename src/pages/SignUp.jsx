@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
-import { useHistory } from 'react-router-dom'
-import Button from '../components/Button/Button.jsx'
-import Input from '../components/Input/Input.jsx'
-import { axiosPost } from '../lib/axios'
+import React, { useState } from "react"
+import { useHistory } from "react-router-dom"
+import Button from "../components/Button/Button.jsx"
+import Input from "../components/Input/Input.jsx"
+import { axiosPost } from "../lib/axios"
 
 import {
   Title,
@@ -18,20 +18,20 @@ import {
 const Signup = () => {
   const [inputsValue, setInputValue] = useState([])
   const history = useHistory()
-  const submitForm = async (e) => {
+  const submitForm = async e => {
     e.preventDefault()
     const clearedData = inputsValue
-      .map(info => ({[info.name]: info.value}))
+      .map(info => ({ [info.name]: info.value }))
       .reduce((accumulator, newVal) => {
-        return accumulator = { ...accumulator, ...newVal }
+        return (accumulator = { ...accumulator, ...newVal })
       }, {})
-      
-    localStorage.setItem('user', JSON.stringify(clearedData))
+
+    localStorage.setItem("user", JSON.stringify(clearedData))
     if (inputsValue.length < 4) return
     try {
-      await axiosPost('users', clearedData)
-      history.push('dashboard')
-      console.log('user Created')
+      await axiosPost("users", clearedData)
+      history.push("dashboard")
+      console.log("user Created")
     } catch (err) {
       console.error(err)
     }
@@ -80,9 +80,8 @@ const Signup = () => {
           Vous avez un compte ?<SignInLink to="login">Me connecter</SignInLink>
         </Signin>
         <Button green content="S'inscrire" />
-        <GuestLink to="/">Continuer en tant qu’inviter</GuestLink>
+        <GuestLink to="/dashboard">Continuer en tant qu’inviter</GuestLink>
       </Form>
-      <GuestLink to="/dashboard">CONTINUER EN TANT QU'INVITÉ</GuestLink>
     </Wrapper>
   )
 }
