@@ -18,11 +18,18 @@ import {
 const Signup = () => {
   const [inputsValue, setInputValue] = useState([])
   const history = useHistory()
-
-  const submitForm = async () => {
-    const userData = inputsValue.map(data => ({}))
+  const submitForm = async (e) => {
+    e.preventDefault()
+    const clearedData = inputsValue
+      .map(info => ({[info.name]: info.value}))
+      .reduce((accumulator, newVal) => {
+        return accumulator = { ...accumulator, ...newVal }
+      }, {})
+      
+    localStorage.setItem('user', JSON.stringify(clearedData))
+    if (inputsValue.length < 4) return
     try {
-      await axiosPost('users', inputsValue)
+      await axiosPost('users', clearedData)
       history.push('dashboard')
       console.log('user Created')
     } catch (err) {
