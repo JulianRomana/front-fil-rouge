@@ -28,7 +28,7 @@ const CustomInput = ({ type, logo, label }) => {
   const handleBlur = () => {
     const {
       current: { value },
-      current
+      current,
     } = inputRef
 
     if (value) return
@@ -63,7 +63,7 @@ const CustomInput = ({ type, logo, label }) => {
 CustomInput.propTypes = {
   type: propTypes.string,
   logo: propTypes.string,
-  label: propTypes.string
+  label: propTypes.string,
 }
 
 export default CustomInput

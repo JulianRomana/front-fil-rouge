@@ -8,7 +8,7 @@ import {
   IconsWrapper,
   BackIcon,
   HomeIcon,
-  Menu
+  Menu,
 } from "./modulesStyle/HeaderStyle"
 
 const Header = ({ hasNav, hasMenu }) => {
@@ -56,7 +56,7 @@ const Header = ({ hasNav, hasMenu }) => {
 Header.propTypes = {
   hasBackButton: PropTypes.bool,
   hasNav: PropTypes.bool,
-  hasMenu: PropTypes.bool
+  hasMenu: PropTypes.bool,
 }
 
 export default Header

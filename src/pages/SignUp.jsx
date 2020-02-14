@@ -9,7 +9,7 @@ import {
   Form,
   Signin,
   InputsWrapper,
-  SignInLink
+  SignInLink,
 } from "./pagesStyle/SignupStyle"
 
 const Signup = () => {
