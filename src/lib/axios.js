@@ -10,8 +10,13 @@ const axiosGet = async (url, params) => {
   return data
 }
 
-const axiosPost = (url, data) => {
-  axios.post(url, data)
+const axiosPost = async (url, data) => {
+  await axios.post(`${process.env.REACT_APP_API_URL}/${url}`, {
+    headers: {
+      accept: 'application/json',
+    },
+    ...data
+  })
 }
 
 export { axiosGet, axiosPost }
