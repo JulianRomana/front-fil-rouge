@@ -6,8 +6,13 @@ import Button from "../components/Button/Button"
 import ThemeIcon from "../assets/images/theme.svg"
 import QuestIcon from "../assets/images/quest.svg"
 import AccountIcon from "../assets/images/account.svg"
+import { Title } from "./pagesStyle/SignupStyle"
 
 const Dashboard = () => {
+  const Main = styled.main`
+    padding: 5rem 1rem 2rem;
+  `
+
   const ButtonList = styled.ul`
     margin: 1rem 0 0 0;
     display: grid;
@@ -120,8 +125,8 @@ const Dashboard = () => {
   })
 
   return (
-    <>
-      <h1 className="title">Tableau de bord</h1>
+    <Main>
+      <Title>Tableau de bord</Title>
       <ButtonList>
         {links.map((link, index) => (
           <li key={index}>
@@ -134,7 +139,7 @@ const Dashboard = () => {
       </ButtonList>
       <Map ref={mapContainer} />
       <Button content="Déconnexion" red full margin="1rem 0 0 0" />
-    </>
+    </Main>
   )
 }
 

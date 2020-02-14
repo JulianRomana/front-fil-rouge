@@ -2,35 +2,29 @@ import styled from "styled-components"
 
 const Wrapper = styled.div`
   position: relative;
-  height: 5.5rem;
   width: 100%;
 `
 const Img = styled.img`
   position: absolute;
-  top: 20px;
-  left: 30px;
+  top: 50%;
+  left: 10%;
   width: 20px;
+  height: 20px;
+  transform: translate(-50%, -50%);
   pointer-events: none;
   user-select: none;
+  z-index: 9;
 `
 const Input = styled.input`
   width: 100%;
-  height: 100%;
-  padding: 0 2rem;
+  padding: 1rem 1rem 1rem 3rem;
   color: #d9d9d9;
-  background-color: none;
   border: 1px solid #d9d9d9;
   border-radius: 10px;
-  font-size: 1.6rem;
+
+  &::placeholder {
+    color: rgba(0, 0, 0, 0.25);
+  }
 `
 
-const Label = styled.label`
-  position: absolute;
-  top: 18px;
-  left: 70px;
-  color: #d9d9d9;
-  pointer-events: none;
-  user-select: none;
-`
-
-export { Wrapper, Img, Input, Label }
+export { Wrapper, Img, Input }

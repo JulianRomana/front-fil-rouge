@@ -3,14 +3,26 @@ import { useLocation, useHistory } from "react-router-dom"
 import styled from "styled-components"
 import BackHome from "../assets/images/back-button.svg"
 import PropTypes from "prop-types"
-import { IconsWrapper, BackIcon, Menu } from "./modulesStyle/HeaderStyle"
+import { IconsWrapper } from "./modulesStyle/HeaderStyle"
 
 const Header = () => {
   const { goBack } = useHistory()
   const { pathname } = useLocation()
 
-  const checkLocation = () => {
-    if (pathname === "/" || pathname === "/dashboard") {
+  const showBack = () => {
+    if (
+      pathname === "/" ||
+      pathname === "/dashboard" ||
+      pathname === "/signup"
+    ) {
+      return "hidden"
+    } else {
+      return "visible"
+    }
+  }
+
+  const showMenu = () => {
+    if (pathname === "/") {
       return "hidden"
     } else {
       return "visible"
@@ -18,13 +30,19 @@ const Header = () => {
   }
 
   const BackIcon = styled.div`
-    visibility: ${checkLocation()};
+    visibility: ${showBack()};
     cursor: pointer;
 
     img {
       width: 1.25rem;
       height: 1.25rem;
     }
+  `
+
+  const Menu = styled.div`
+    font-weight: bold;
+    text-transform: uppercase;
+    visibility: ${showMenu()};
   `
 
   return (

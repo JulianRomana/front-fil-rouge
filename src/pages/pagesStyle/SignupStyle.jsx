@@ -2,30 +2,28 @@ import styled from "styled-components"
 import { Link } from "react-router-dom"
 
 const Wrapper = styled.section`
-  height: 100vh;
-  padding: 4rem 2rem 2rem;
+  padding: 5rem 1rem 2rem;
 `
 const Title = styled.h1`
   color: #000000;
   text-align: left;
+  font-weight: bold;
 `
-const Subtitle = styled.h3`
+const Subtitle = styled.p`
   color: #bfbfbf;
-  font-size: 1.4rem;
   font-weight: normal;
-  text-align: left;
 `
 const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  margin-top: 6rem;
+  margin: 2rem 0 0 0;
 `
 
 const InputsWrapper = styled.div`
   display: grid;
-  grid-gap: 1.5rem;
+  grid-gap: 1rem;
   width: 100%;
 `
 
@@ -41,5 +39,20 @@ const SignInLink = styled(Link)`
   text-decoration: underline;
   color: #000000;
 `
+const GuestLink = styled(Link)`
+  text-decoration: underline;
+  color: #000000;
+  text-transform: uppercase;
+  margin: 1rem 0 0;
+`
 
-export { Wrapper, Title, Subtitle, Form, InputsWrapper, Signin, SignInLink }
+export {
+  Wrapper,
+  Title,
+  Subtitle,
+  Form,
+  InputsWrapper,
+  Signin,
+  SignInLink,
+  GuestLink
+}

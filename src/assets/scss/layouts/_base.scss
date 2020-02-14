@@ -3,13 +3,6 @@ body {
   font-family: "Sf-Pro-Display", sans-serif;
 }
 
-h1,
-h2,
-h3 {
-  font-weight: bold;
-  margin: 0 0 1rem 0;
-}
-
 h1 {
   font-size: 2em;
 }
@@ -32,4 +25,22 @@ h1 {
 a {
   text-decoration: none;
   color: map-get($colors, black);
+}
+
+.fade-out-enter {
+  opacity: 1;
+  transition: opacity 300ms;
+}
+
+.fade-out-enter-active {
+  opacity: 0;
+}
+
+.fade-out-exit {
+  opacity: 0;
+}
+
+.fade-out-exit-active {
+  opacity: 1;
+  transition: opacity 300ms;
 }

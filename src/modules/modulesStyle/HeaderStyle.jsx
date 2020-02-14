@@ -12,9 +12,4 @@ const IconsWrapper = styled.header`
   height: 5rem;
 `
 
-const Menu = styled.div`
-  font-weight: bold;
-  text-transform: uppercase;
-`
-
-export { IconsWrapper, Menu }
+export { IconsWrapper }
