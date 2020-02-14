@@ -43,7 +43,7 @@ const GuestLink = styled(Link)`
   text-decoration: underline;
   color: #000000;
   text-transform: uppercase;
-  margin: 1rem 0 0;
+  margin: 2rem 0 0;
 `
 
 export {
@@ -54,5 +54,5 @@ export {
   InputsWrapper,
   Signin,
   SignInLink,
-  GuestLink
+  GuestLink,
 }
