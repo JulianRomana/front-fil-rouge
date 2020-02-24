@@ -26,8 +26,7 @@ const Header = () => {
     if (
       pathname === "/" ||
       pathname === "/dashboard" ||
-      pathname === "/signup" ||
-      pathname === "/environment"
+      pathname === "/signup"
     ) {
       return "hidden"
     } else {
