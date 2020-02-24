@@ -13,7 +13,8 @@ const Header = () => {
     if (
       pathname === "/" ||
       pathname === "/dashboard" ||
-      pathname === "/signup"
+      pathname === "/signup" ||
+      pathname === "/environment"
     ) {
       return "hidden"
     } else {
@@ -43,6 +44,7 @@ const Header = () => {
     font-weight: bold;
     text-transform: uppercase;
     visibility: ${showMenu()};
+    font-size: 2rem;
   `
 
   return (

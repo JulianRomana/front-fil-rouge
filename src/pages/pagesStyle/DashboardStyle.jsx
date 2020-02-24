@@ -1,11 +1,11 @@
 import styled from "styled-components"
 
 const Main = styled.main`
-  padding: 5rem 1rem 2rem;
+  padding: 7rem 1.5rem 2rem;
 `
 
 const ButtonList = styled.ul`
-  margin: 1rem 0 0 0;
+  margin-top: 1rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 1fr);
@@ -29,7 +29,7 @@ const ButtonList = styled.ul`
     }
 
     p {
-      margin: 10px 0 0 0;
+      margin-top: 1rem;
     }
 
     a {
@@ -39,12 +39,12 @@ const ButtonList = styled.ul`
 `
 
 const Text = styled.p`
-  margin: 1rem 0 0 0;
+  margin-top: 1rem;
   font-weight: bold;
 `
 
 const Map = styled.div`
-  margin: 0.5rem 0 0 0;
+  margin-top: 0.5rem;
   height: 250px;
   border-radius: 10px;
 `
