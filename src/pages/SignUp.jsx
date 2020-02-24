@@ -22,8 +22,8 @@ const Signup = () => {
     e.preventDefault()
     const clearedData = inputsValue
       .map(info => ({ [info.name]: info.value }))
-      .reduce((accumulator, newVal) => {
-        return (accumulator = { ...accumulator, ...newVal })
+      .reduce((accumulator, nextVal) => {
+        return (accumulator = { ...accumulator, ...nextVal })
       }, {})
 
     localStorage.setItem("user", JSON.stringify(clearedData))
@@ -39,7 +39,9 @@ const Signup = () => {
 
   return (
     <Wrapper>
-      <Title>Créer mon compte</Title>
+      <Title>
+        Créer mon <br /> compte
+      </Title>
       <Subtitle>Plein de features vous attends</Subtitle>
       <Form onSubmit={submitForm}>
         <InputsWrapper>
@@ -79,7 +81,7 @@ const Signup = () => {
         <Signin>
           Vous avez un compte ?<SignInLink to="login">Me connecter</SignInLink>
         </Signin>
-        <Button green content="S'inscrire" />
+        <Button onClick={submitForm} green content="S'inscrire" />
         <GuestLink to="/dashboard">Continuer en tant qu’inviter</GuestLink>
       </Form>
     </Wrapper>

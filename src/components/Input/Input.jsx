@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react"
 import propTypes from "prop-types"
-import { Wrapper, Img, Input } from "./InputStyle"
+import { Wrapper, Img, Input, Label } from "./InputStyle"
 import email from "../../assets/images/email.svg"
 import label from "../../assets/images/label.svg"
 import password from "../../assets/images/icons/password.svg"
@@ -8,16 +8,12 @@ import { CSSTransition } from "react-transition-group"
 
 const emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 const getLogo = logoName => {
-  switch (logoName) {
-    case "email":
-      return email
-    case "label":
-      return label
-    case "password":
-      return password
-    default:
-      return null
+  const logos = {
+    email,
+    label,
+    password,
   }
+  return logos[logoName]
 }
 
 const CustomInput = ({
@@ -76,14 +72,16 @@ const CustomInput = ({
         timeout={10}
         in={!focus}
       >
-        <Img src={getLogo(logo)} alt="" />
+        <>
+          <Img src={getLogo(logo)} alt="" />
+          <Label>{label}</Label>
+        </>
       </CSSTransition>
       <Input
         ref={inputRef}
         onBlur={handleBlur}
         onFocus={handleFocus}
         type={type}
-        placeholder={label}
       />
     </Wrapper>
   )
