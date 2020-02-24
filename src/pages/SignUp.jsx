@@ -31,7 +31,6 @@ const Signup = () => {
     try {
       await axiosPost("users", clearedData)
       history.push("dashboard")
-      console.log("user Created")
     } catch (err) {
       console.error(err)
     }
