@@ -1,6 +1,8 @@
-import React from "react"
+import React, { useState } from "react"
+import { useHistory } from "react-router-dom"
 import Button from "../components/Button/Button.jsx"
 import Input from "../components/Input/Input.jsx"
+import { axiosPost } from "../lib/axios"
 
 import {
   Title,
@@ -14,26 +16,73 @@ import {
 } from "./pagesStyle/SignupStyle"
 
 const Signup = () => {
-  const submitForm = e => {
+  const [inputsValue, setInputValue] = useState([])
+  const history = useHistory()
+  const submitForm = async e => {
     e.preventDefault()
+    const clearedData = inputsValue
+      .map(info => ({ [info.name]: info.value }))
+      .reduce((accumulator, nextVal) => {
+        return (accumulator = { ...accumulator, ...nextVal })
+      }, {})
+
+    localStorage.setItem("user", JSON.stringify(clearedData))
+    if (inputsValue.length < 4) return
+    try {
+      await axiosPost("users", clearedData)
+      history.push("dashboard")
+      console.log("user Created")
+    } catch (err) {
+      console.error(err)
+    }
   }
 
   return (
     <Wrapper>
-      <Title>Créer mon compte</Title>
+      <Title>
+        Créer mon <br /> compte
+      </Title>
       <Subtitle>Plein de features vous attends</Subtitle>
       <Form onSubmit={submitForm}>
         <InputsWrapper>
-          <Input logo="label" label="Saisir mon nom" type="text" />
-          <Input logo="label" label="Saisir mon prenom" type="text" />
-          <Input logo="email" label="Saisir e-mail" type="email" />
-          <Input logo="email" label="Saisir mon mot de passe" type="password" />
+          <Input
+            name="username"
+            logo="label"
+            label="Saisir mon pseudonyme"
+            type="text"
+            currentInputsValues={inputsValue}
+            setInputValue={setInputValue}
+          />
+          <Input
+            name="email"
+            logo="email"
+            label="Saisir e-mail"
+            type="email"
+            currentInputsValues={inputsValue}
+            setInputValue={setInputValue}
+          />
+          <Input
+            name="password"
+            logo="password"
+            label="Saisir mon mot de passe"
+            type="password"
+            currentInputsValues={inputsValue}
+            setInputValue={setInputValue}
+          />
+          <Input
+            name="confirm"
+            logo="password"
+            label="Confirmer mon mot de passe"
+            type="password"
+            currentInputsValues={inputsValue}
+            setInputValue={setInputValue}
+          />
         </InputsWrapper>
         <Signin>
           Vous avez un compte ?<SignInLink to="login">Me connecter</SignInLink>
         </Signin>
-        <Button green content="S'inscrire" />
-        <GuestLink to="/">Continuer en tant qu’inviter</GuestLink>
+        <Button onClick={submitForm} green content="S'inscrire" />
+        <GuestLink to="/dashboard">Continuer en tant qu’inviter</GuestLink>
       </Form>
     </Wrapper>
   )

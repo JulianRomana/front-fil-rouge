@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 
 const Button = ({ content, ...props }) => {
   return (
-    <div
+    <button
       className={`button
         ${props.white ? "button--white" : ""}
         ${props.green ? "button--green" : ""}
@@ -13,7 +13,7 @@ const Button = ({ content, ...props }) => {
       style={{ margin: props.margin }}
     >
       {content}
-    </div>
+    </button>
   )
 }
 

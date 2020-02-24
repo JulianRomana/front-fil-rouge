@@ -25,10 +25,11 @@ const Contents = styled.div`
   justify-content: center;
   color: white;
   text-align: center;
+  margin-bottom: 7.5rem;
 `
 
 const Title = styled.h1`
-  font-size: 1.5rem;
+  font-size: 2.4rem;
   font-weight: bold;
 `
 
@@ -38,9 +39,8 @@ const Logo = styled.img`
 `
 
 const SecondSubtitle = styled.h3`
-  margin-bottom: 1.5rem;
   width: 80%;
-  font-size: 1.25rem;
+  font-size: 2.2rem;
 `
 
 const Skip = styled(Link)`
@@ -49,6 +49,7 @@ const Skip = styled(Link)`
   text-decoration: underline;
   cursor: pointer;
   text-transform: uppercase;
+  font-size: 1.7rem;
 `
 
 export { Main, Wrapper, Contents, Logo, Title, SecondSubtitle, Skip }
