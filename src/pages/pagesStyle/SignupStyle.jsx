@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 
 const Wrapper = styled.section`
   height: 100%;
-  padding: 5rem 1rem 2rem;
+  padding: 7rem 1.5rem 2rem;
 `
 const Title = styled.h1`
   color: #000000;

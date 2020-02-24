@@ -2,12 +2,12 @@ import styled from "styled-components"
 import { Link } from "react-router-dom"
 
 const Main = styled.main`
-  height: 100vh;
+  min-height: 100vh;
   background-color: #1b9a5a;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
+  padding: 2rem;
 `
 
 const Wrapper = styled.div`
@@ -25,12 +25,13 @@ const Contents = styled.div`
   justify-content: center;
   color: white;
   text-align: center;
-  margin-bottom: 7.5rem;
+  margin-bottom: 5rem;
 `
 
 const Title = styled.h1`
   font-size: 2.4rem;
   font-weight: bold;
+  margin-bottom: 3.5rem;
 `
 
 const Logo = styled.img`
