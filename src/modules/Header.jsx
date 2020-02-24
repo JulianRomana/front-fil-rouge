@@ -3,7 +3,6 @@ import { useLocation, useHistory } from "react-router-dom"
 import styled from "styled-components"
 import BackHomeIcon from "../assets/images/back-button.svg"
 import HeaderMenu from "../components/HeaderMenu/HeaderMenu"
-
 import { IconsWrapper } from "./modulesStyle/HeaderStyle"
 import { CSSTransition } from "react-transition-group"
 
@@ -12,12 +11,17 @@ const Header = () => {
   const { pathname } = useLocation()
   const [isMenuOpened, setMenuStatus] = useState(false)
   const [currentLocation, setLocation] = useState(pathname)
-  useEffect(() => {
+  const closeMenuOnBack = () => {
     if (pathname !== currentLocation) {
       setMenuStatus(false)
       setLocation(pathname)
     }
+  }
+
+  useEffect(() => {
+    closeMenuOnBack()
   })
+
   const showBackArrow = () => {
     if (
       pathname === "/" ||
