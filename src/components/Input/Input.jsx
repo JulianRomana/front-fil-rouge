@@ -39,6 +39,14 @@ const CustomInput = ({
   }
 
   const handleBlur = () => {
+    const { current } = inputRef
+
+    if (current.value.length) return
+    current.blur()
+    setFocus(false)
+  }
+
+  const onInputValueChange = () => {
     const {
       current: { value },
       current,
@@ -58,9 +66,7 @@ const CustomInput = ({
       ])
       setOldInputVal(value)
       return
-    } else if (value === oldInputVal) return
-    current.blur()
-    setFocus(false)
+    }
   }
 
   return (
@@ -82,6 +88,7 @@ const CustomInput = ({
         onBlur={handleBlur}
         onFocus={handleFocus}
         type={type}
+        onChange={onInputValueChange}
       />
     </Wrapper>
   )
