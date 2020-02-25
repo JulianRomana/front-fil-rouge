@@ -5,8 +5,8 @@ import email from "../../assets/images/email.svg"
 import label from "../../assets/images/label.svg"
 import password from "../../assets/images/icons/password.svg"
 import { CSSTransition } from "react-transition-group"
+import { validateEmail } from "../../helpers/email"
 
-const emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 const getLogo = logoName => {
   const logos = {
     email,
@@ -31,11 +31,6 @@ const CustomInput = ({
   const handleFocus = () => {
     inputRef.current.focus()
     setFocus(true)
-  }
-
-  const validateEmail = email => {
-    const isEmailValid = email.match(emailRegex)
-    return isEmailValid && isEmailValid.length
   }
 
   const handleBlur = () => {

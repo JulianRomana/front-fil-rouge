@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import Input from "../components/Input/Input"
 import Button from "../components/Button/Button"
+import { axiosGet } from "../lib/axios"
 import {
   Wrapper,
   Title,
@@ -16,7 +17,18 @@ const Login = () => {
 
   const onLogin = e => {
     e.preventDefault()
-    console.log(inputsValue)
+    if (inputsValue.length <= 1) return
+    const clearedData = inputsValue
+      .map(inputValue => ({
+        [inputValue.name]: inputValue.value,
+      }))
+      .reduce((acc, value) => {
+        return {
+          ...acc,
+          ...value,
+        }
+      }, {})
+    axiosGet("login", clearedData)
   }
 
   return (
@@ -30,18 +42,18 @@ const Login = () => {
           <Input
             logo="label"
             label="Saisir mon pseudo"
-            name="email"
-            type="email"
-            currentInputsValues={inputsValue}
-            setInputValue={setInputsValue}
+            name="pseudo"
+            type="text"
+            currentInputValue={inputsValue}
+            sendInputValue={setInputsValue}
           />
           <Input
             logo="password"
             label="Saisir mon mot de passe"
             name="password"
             type="password"
-            currentInputsValues={inputsValue}
-            setInputValue={setInputsValue}
+            currentInputValue={inputsValue}
+            sendInputValue={setInputsValue}
           />
         </InputsWrapper>
         <ToSignup>
