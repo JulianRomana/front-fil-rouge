@@ -1,17 +1,18 @@
 import styled from "styled-components"
 import { Link } from "react-router-dom"
+import { black, grey } from "../../assets/jsxStyles/Variables"
 
 const Wrapper = styled.section`
   height: 100%;
-  padding: 7rem 1.5rem 2rem;
+  padding: 4rem 1.5rem 2rem;
 `
 const Title = styled.h1`
-  color: #000000;
+  color: ${black};
   text-align: left;
   font-weight: bold;
 `
 const Subtitle = styled.p`
-  color: #bfbfbf;
+  color: ${grey};
   font-size: 1.3rem;
   font-weight: normal;
 `
@@ -40,7 +41,7 @@ const Signin = styled.p`
 
 const SignInLink = styled(Link)`
   text-decoration: underline;
-  color: #000000;
+  color: ${black};
   font-size: 1.3rem;
 `
 
@@ -50,7 +51,7 @@ const GuestLink = styled(Link)`
   font-size: 1.3rem;
   text-align: center;
   text-decoration: underline;
-  color: #000000;
+  color: ${black};
 `
 
 export {

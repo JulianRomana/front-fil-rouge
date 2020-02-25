@@ -5,6 +5,7 @@ import BackHomeIcon from "../assets/images/back-button.svg"
 import HeaderMenu from "../components/HeaderMenu/HeaderMenu"
 import { IconsWrapper } from "./modulesStyle/HeaderStyle"
 import { CSSTransition } from "react-transition-group"
+import { white, black } from "../assets/jsxStyles/Variables"
 
 const Header = () => {
   const { goBack } = useHistory()
@@ -55,7 +56,7 @@ const Header = () => {
   const Menu = styled.div`
     position: relative;
     z-index: 10;
-    color: ${isMenuOpened ? "#ffffff" : "#000000"};
+    color: ${isMenuOpened ? white : black};
     font-size: 1.6rem;
     font-weight: bold;
     text-transform: uppercase;

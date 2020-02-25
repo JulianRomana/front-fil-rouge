@@ -1,9 +1,10 @@
 import styled from "styled-components"
 import { Link } from "react-router-dom"
+import { white, green } from "../../assets/jsxStyles/Variables"
 
 const Main = styled.main`
   min-height: 100vh;
-  background-color: #1b9a5a;
+  background-color: ${green};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -23,7 +24,7 @@ const Contents = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: ${white};
   text-align: center;
   margin-bottom: 5rem;
 `
@@ -46,7 +47,7 @@ const SecondSubtitle = styled.h3`
 
 const Skip = styled(Link)`
   margin-top: 1.5rem;
-  color: #ffffff;
+  color: ${white};
   text-decoration: underline;
   cursor: pointer;
   text-transform: uppercase;

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import styled from "styled-components"
+import { green, white } from "../../assets/jsxStyles/Variables"
 
 const OpenedMenu = styled.div`
   position: fixed;
@@ -13,8 +14,8 @@ const OpenedMenu = styled.div`
   width: 100%;
   height: 100vh;
   padding: 0 3.6rem;
-  background-color: #1b9a5a;
-  color: #ffffff;
+  background-color: ${green};
+  color: ${white};
 `
 const ItemsContainer = styled.div`
   display: grid;
@@ -23,17 +24,17 @@ const ItemsContainer = styled.div`
 const Environment = styled(Link)`
   display: flex;
   font-size: 2.4rem;
-  color: #ffffff;
+  color: ${white};
 `
 const Profile = styled(Link)`
   display: flex;
   font-size: 2.4rem;
-  color: #ffffff;
+  color: ${white};
 `
 const Quests = styled(Link)`
   display: flex;
   font-size: 2.4rem;
-  color: #ffffff;
+  color: ${white};
 `
 const Logout = styled.div`
   display: flex;
