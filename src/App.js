@@ -4,6 +4,7 @@ import Dashboard from "./pages/Dashboard"
 import Environment from "./pages/Environment"
 import Header from "./modules/Header"
 import Login from "./pages/Login"
+import Profile from "./pages/Profile"
 import Quest from "./pages/Quest"
 import Signup from "./pages/SignUp"
 import SplashScreen from "./pages/SplashScreen"
@@ -23,6 +24,7 @@ const App = () => {
         <Route exact path="/station" component={Station} />
         <Route exact path="/quest" component={Quest} />
         <Route exact path="/login" component={Login} />
+        <Route exact path="/profile" component={Profile} />
       </Switch>
     </Router>
   )
