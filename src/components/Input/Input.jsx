@@ -21,8 +21,8 @@ const CustomInput = ({
   type,
   logo,
   label,
-  currentInputsValues,
-  setInputValue,
+  currentInputValue,
+  sendInputValue,
 }) => {
   const [focus, setFocus] = useState(false)
   const [oldInputVal, setOldInputVal] = useState(false)
@@ -46,10 +46,10 @@ const CustomInput = ({
 
     if (value && oldInputVal !== value) {
       if (current.type === "email" && !validateEmail(value)) return
-      const clearedData = currentInputsValues.filter(
+      const clearedData = currentInputValue.filter(
         userData => userData.name !== name,
       )
-      setInputValue([
+      sendInputValue([
         ...clearedData,
         {
           name,
@@ -68,8 +68,8 @@ const CustomInput = ({
       <CSSTransition
         mountOnEnter
         unmountOnExit
-        classNames="fade-out"
-        timeout={10}
+        classNames="fade-in"
+        timeout={100}
         in={!focus}
       >
         <>
@@ -92,8 +92,8 @@ CustomInput.propTypes = {
   type: propTypes.string,
   logo: propTypes.string,
   label: propTypes.string,
-  currentInputsValues: propTypes.array,
-  setInputValue: propTypes.func,
+  currentInputValue: propTypes.any,
+  sendInputValue: propTypes.func,
 }
 
 export default CustomInput

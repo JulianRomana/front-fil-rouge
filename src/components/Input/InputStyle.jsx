@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { greyLighter } from "../../assets/jsxStyles/Variables"
 
 const Wrapper = styled.div`
   position: relative;
@@ -18,8 +19,8 @@ const Img = styled.img`
 const Input = styled.input`
   width: 100%;
   padding: 1.6rem 1.6rem;
-  color: #d9d9d9;
-  border: 1px solid #d9d9d9;
+  color: ${greyLighter};
+  border: 1px solid ${greyLighter};
   border-radius: 10px;
   font-size: 1.6rem;
   user-select: none;
@@ -30,7 +31,7 @@ const Label = styled.label`
   position: absolute;
   top: 18px;
   left: 70px;
-  color: #d9d9d9;
+  color: ${greyLighter};
   pointer-events: none;
   user-select: none;
   font-size: 1.6rem;

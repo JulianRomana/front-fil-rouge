@@ -1,20 +1,33 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { useLocation, useHistory } from "react-router-dom"
 import styled from "styled-components"
-import BackHome from "../assets/images/back-button.svg"
-import PropTypes from "prop-types"
+import BackHomeIcon from "../assets/images/back-button.svg"
+import HeaderMenu from "../components/HeaderMenu/HeaderMenu"
 import { IconsWrapper } from "./modulesStyle/HeaderStyle"
+import { CSSTransition } from "react-transition-group"
+import { white, black } from "../assets/jsxStyles/Variables"
 
 const Header = () => {
   const { goBack } = useHistory()
   const { pathname } = useLocation()
+  const [isMenuOpened, setMenuStatus] = useState(false)
+  const [currentLocation, setLocation] = useState(pathname)
+  const closeMenuOnBack = () => {
+    if (pathname !== currentLocation) {
+      setMenuStatus(false)
+      setLocation(pathname)
+    }
+  }
 
-  const showBack = () => {
+  useEffect(() => {
+    closeMenuOnBack()
+  })
+
+  const showBackArrow = () => {
     if (
       pathname === "/" ||
       pathname === "/dashboard" ||
-      pathname === "/signup" ||
-      pathname === "/environment"
+      pathname === "/signup"
     ) {
       return "hidden"
     } else {
@@ -23,7 +36,7 @@ const Header = () => {
   }
 
   const showMenu = () => {
-    if (pathname === "/") {
+    if (pathname === "/" || pathname === "/signup") {
       return "hidden"
     } else {
       return "visible"
@@ -31,7 +44,7 @@ const Header = () => {
   }
 
   const BackIcon = styled.div`
-    visibility: ${showBack()};
+    visibility: ${showBackArrow()};
     cursor: pointer;
 
     img {
@@ -41,27 +54,35 @@ const Header = () => {
   `
 
   const Menu = styled.div`
+    position: relative;
+    z-index: 10;
+    color: ${isMenuOpened ? white : black};
+    font-size: 1.6rem;
     font-weight: bold;
     text-transform: uppercase;
     visibility: ${showMenu()};
-    font-size: 2rem;
+    cursor: pointer;
   `
 
   return (
     <IconsWrapper>
-      <BackIcon onClick={() => goBack()}>
-        <img src={BackHome} alt="Back Icon" />
+      <BackIcon onClick={goBack}>
+        <img src={BackHomeIcon} alt="Back Icon" />
       </BackIcon>
-      <Menu>Menu</Menu>
+      <CSSTransition
+        unmountOnExit
+        mountOnEnter
+        in={isMenuOpened}
+        timeout={800}
+        classNames="fade-in"
+      >
+        <HeaderMenu />
+      </CSSTransition>
+      <Menu onClick={() => setMenuStatus(!isMenuOpened)}>
+        {isMenuOpened ? "FERMER" : "MENU"}
+      </Menu>
     </IconsWrapper>
   )
-}
-
-Header.propTypes = {
-  hasBackButton: PropTypes.bool,
-  hasNav: PropTypes.bool,
-  hasMenu: PropTypes.bool,
-  location: PropTypes.string,
 }
 
 export default Header
