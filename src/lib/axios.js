@@ -11,12 +11,17 @@ const axiosGet = async (url, params) => {
 }
 
 const axiosPost = async (url, data) => {
-  await axios.post(`${process.env.REACT_APP_API_URL}/${url}`, {
-    headers: {
-      accept: "application/json",
+  await axios.post(
+    `${process.env.REACT_APP_API_URL}/${url}`,
+    {
+      ...data,
     },
-    ...data,
-  })
+    {
+      headers: {
+        accept: "application/json",
+      },
+    },
+  )
 }
 
 export { axiosGet, axiosPost }

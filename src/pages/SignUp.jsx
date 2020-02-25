@@ -29,7 +29,7 @@ const Signup = () => {
     localStorage.setItem("user", JSON.stringify(clearedData))
     if (inputsValue.length < 4) return
     try {
-      await axiosPost("users", clearedData)
+      await axiosPost("api/users", clearedData)
       history.push("dashboard")
     } catch (err) {
       console.error(err)
@@ -49,32 +49,32 @@ const Signup = () => {
             logo="label"
             label="Saisir mon pseudonyme"
             type="text"
-            currentInputsValues={inputsValue}
-            setInputValue={setInputValue}
+            currentInputValue={inputsValue}
+            sendInputValue={setInputValue}
           />
           <Input
             name="email"
             logo="email"
             label="Saisir e-mail"
             type="email"
-            currentInputsValues={inputsValue}
-            setInputValue={setInputValue}
+            currentInputValue={inputsValue}
+            sendInputValue={setInputValue}
           />
           <Input
             name="password"
             logo="password"
             label="Saisir mon mot de passe"
             type="password"
-            currentInputsValues={inputsValue}
-            setInputValue={setInputValue}
+            currentInputValue={inputsValue}
+            sendInputValue={setInputValue}
           />
           <Input
             name="confirm"
             logo="password"
             label="Confirmer mon mot de passe"
             type="password"
-            currentInputsValues={inputsValue}
-            setInputValue={setInputValue}
+            currentInputValue={inputsValue}
+            sendInputValue={setInputValue}
           />
         </InputsWrapper>
         <Signin>
