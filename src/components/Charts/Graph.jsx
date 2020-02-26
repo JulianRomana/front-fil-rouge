@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from "react"
 import * as d3 from "d3"
 import styled from "styled-components"
+import { green } from "../../assets/jsxStyles/Variables"
 
 const Graph = () => {
   const Container = styled.div`
@@ -57,8 +58,7 @@ const Graph = () => {
     svg
       .append("path")
       .datum(data)
-      .attr("fill", "#cce5df")
-      .attr("stroke", "#69b3a2")
+      .attr("fill", green)
       .attr("stroke-width", 1.5)
       .attr("d", area)
 

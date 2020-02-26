@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from "react"
 import * as d3 from "d3"
 import PropTypes from "prop-types"
+import { green, greyLighter } from "../../assets/jsxStyles/Variables"
 import styled from "styled-components"
 
 const DoughnutList = ({ doughnutDataList }) => {
@@ -29,7 +30,7 @@ const DoughnutList = ({ doughnutDataList }) => {
   const width = 280 / 3
   const height = 100
   const radius = Math.min(width, height) / 2
-  const color = d3.scaleOrdinal().range(["#1B9A5A", "#F1F1F1"])
+  const color = d3.scaleOrdinal().range([green, greyLighter])
   const pie = d3
     .pie()
     .sort(null)
