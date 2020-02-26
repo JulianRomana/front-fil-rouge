@@ -20,20 +20,15 @@ const Signup = () => {
   const history = useHistory()
   const submitForm = async e => {
     e.preventDefault()
+    if (inputsValue.length < 4) return
     const clearedData = inputsValue
       .map(info => ({ [info.name]: info.value }))
       .reduce((accumulator, nextVal) => {
-        return (accumulator = { ...accumulator, ...nextVal })
+        return { ...accumulator, ...nextVal }
       }, {})
-
+    await axiosPost("api/users", clearedData)
     localStorage.setItem("user", JSON.stringify(clearedData))
-    if (inputsValue.length < 4) return
-    try {
-      await axiosPost("api/users", clearedData)
-      history.push("dashboard")
-    } catch (err) {
-      console.error(err)
-    }
+    history.push("dashboard")
   }
 
   return (
