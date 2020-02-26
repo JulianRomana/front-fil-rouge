@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { useHistory } from "react-router-dom"
 import Input from "../components/Input/Input"
 import Button from "../components/Button/Button"
 import { axiosGet } from "../lib/axios"
@@ -10,25 +11,34 @@ import {
   InputsWrapper,
   ToSignup,
   SignUp,
+  ErrorMessage,
 } from "./pagesStyle/LoginStyle"
 
 const Login = () => {
   const [inputsValue, setInputsValue] = useState([])
+  const [hasErros, setHasErrors] = useState(false)
+  const history = useHistory()
 
-  const onLogin = e => {
+  const onLogin = async e => {
     e.preventDefault()
-    if (inputsValue.length <= 1) return
+    if (inputsValue.length !== 2) return
     const clearedData = inputsValue
-      .map(inputValue => ({
-        [inputValue.name]: inputValue.value,
-      }))
-      .reduce((acc, value) => {
-        return {
-          ...acc,
-          ...value,
-        }
-      }, {})
-    axiosGet("login", clearedData)
+      .map(inputValue => {
+        return { [inputValue.name]: inputValue.value }
+      })
+      .filter(inputValue => Object.keys(inputValue)[0] === "username")
+    const params = {
+      ...clearedData[0],
+      page: 1,
+    }
+
+    const response = await axiosGet("api/users", params)
+    if (response.length) {
+      localStorage.setItem("user", JSON.stringify(...response))
+      history.push("dashboard")
+    } else {
+      setHasErrors(true)
+    }
   }
 
   return (
@@ -42,7 +52,7 @@ const Login = () => {
           <Input
             logo="label"
             label="Saisir mon pseudo"
-            name="pseudo"
+            name="username"
             type="text"
             currentInputValue={inputsValue}
             sendInputValue={setInputsValue}
@@ -60,6 +70,9 @@ const Login = () => {
           Vous n’avez pas de compte ?<SignUp to="signup">M’inscrire</SignUp>
         </ToSignup>
         <Button onClick={onLogin} green content="Connexion" />
+        {hasErros && (
+          <ErrorMessage>Mauvais mot de passe ou pseudo !</ErrorMessage>
+        )}
       </Form>
     </Wrapper>
   )

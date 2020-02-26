@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { greyLighter } from "../../assets/jsxStyles/Variables"
+import { black, greyLighter } from "../../assets/jsxStyles/Variables"
 
 const Wrapper = styled.div`
   position: relative;
@@ -19,11 +19,10 @@ const Img = styled.img`
 const Input = styled.input`
   width: 100%;
   padding: 1.6rem 1.6rem;
-  color: ${greyLighter};
+  color: ${black};
   border: 1px solid ${greyLighter};
   border-radius: 10px;
   font-size: 1.6rem;
-  user-select: none;
   outline: none;
 `
 

@@ -27,7 +27,8 @@ const Header = () => {
     if (
       pathname === "/" ||
       pathname === "/dashboard" ||
-      pathname === "/signup"
+      pathname === "/signup" ||
+      pathname === "/login"
     ) {
       return "hidden"
     } else {
@@ -36,7 +37,7 @@ const Header = () => {
   }
 
   const showMenu = () => {
-    if (pathname === "/" || pathname === "/signup") {
+    if (pathname === "/" || pathname === "/signup" || pathname === "/login") {
       return "hidden"
     } else {
       return "visible"

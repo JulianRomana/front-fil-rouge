@@ -1,4 +1,5 @@
 import React from "react"
+import { useHistory } from "react-router-dom"
 import LogoutIcon from "../../assets/images/icons/logout.svg"
 import ProfileIcon from "../../assets/images/icons/profile.svg"
 import QuestIcon from "../../assets/images/icons/quest.svg"
@@ -16,6 +17,13 @@ import {
 } from "./HeaderMenuStyle"
 
 const HeaderMenu = () => {
+  const history = useHistory()
+
+  const logoutUser = () => {
+    localStorage.removeItem("user")
+    history.push("login")
+  }
+
   return (
     <OpenedMenu>
       <ItemsContainer>
@@ -31,7 +39,7 @@ const HeaderMenu = () => {
           <Icon src={QuestIcon} alt="" />
           <ItemTextLarger> MES QUÊTES</ItemTextLarger>
         </Quests>
-        <Logout>
+        <Logout onClick={logoutUser}>
           <Icon src={LogoutIcon} alt="logout icon" />
           <ItemText>DÉCONNEXION</ItemText>
         </Logout>

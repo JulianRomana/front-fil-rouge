@@ -39,6 +39,7 @@ const Quests = styled(Link)`
 const Logout = styled.div`
   display: flex;
   font-size: 2.4rem;
+  cursor: pointer;
 `
 const Icon = styled.img``
 const ItemText = styled.span`

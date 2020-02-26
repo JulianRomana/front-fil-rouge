@@ -1,17 +1,17 @@
 import styled from "styled-components"
 import { Link } from "react-router-dom"
-import { grey } from "../../assets/jsxStyles/Variables"
+import { grey, red } from "../../assets/jsxStyles/Variables"
 
 const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
   margin-top: 4rem;
-  padding: 0 2rem 8rem;
+  padding: 0 2rem 5rem;
 `
 const Title = styled.h1`
   font-size: 4rem;
   font-weight: bold;
-  margin-bottom: 10rem;
+  margin-bottom: 9rem;
 `
 const LoginExplaination = styled.p`
   text-align: center;
@@ -35,13 +35,17 @@ const ToSignup = styled.p`
   display: flex;
   flex-direction: column;
   text-align: center;
-  margin-bottom: 12rem;
+  margin-bottom: 10rem;
 `
 
 const SignUp = styled(Link)`
   text-decoration: underline;
 `
-
+const ErrorMessage = styled.span`
+  margin-top: 2rem;
+  color: ${red};
+  font-size: 1.4rem;
+`
 export {
   Wrapper,
   Title,
@@ -50,4 +54,5 @@ export {
   InputsWrapper,
   ToSignup,
   SignUp,
+  ErrorMessage,
 }

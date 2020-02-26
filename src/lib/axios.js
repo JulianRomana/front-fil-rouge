@@ -11,17 +11,17 @@ const axiosGet = async (url, params) => {
 }
 
 const axiosPost = async (url, data) => {
-  await axios.post(
-    `${process.env.REACT_APP_API_URL}/${url}`,
-    {
-      ...data,
+  await axios.post(`${process.env.REACT_APP_API_URL}/${url}`, data, {
+    headers: {
+      accept: "application/json",
     },
-    {
-      headers: {
-        accept: "application/json",
-      },
-    },
-  )
+  })
 }
 
-export { axiosGet, axiosPost }
+const axiosDelete = async (url, params) => {
+  await axios.delete(`${process.env.REACT_APP_API_URL}/${url}`, {
+    params,
+  })
+}
+
+export { axiosGet, axiosPost, axiosDelete }
