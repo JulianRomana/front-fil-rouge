@@ -41,7 +41,7 @@ const ToSignup = styled.p`
 const SignUp = styled(Link)`
   text-decoration: underline;
 `
-const Error = styled.span`
+const ErrorMessage = styled.span`
   margin-top: 2rem;
   color: ${red};
   font-size: 1.4rem;
@@ -54,5 +54,5 @@ export {
   InputsWrapper,
   ToSignup,
   SignUp,
-  Error,
+  ErrorMessage,
 }

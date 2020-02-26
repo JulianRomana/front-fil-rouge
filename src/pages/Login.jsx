@@ -11,7 +11,7 @@ import {
   InputsWrapper,
   ToSignup,
   SignUp,
-  Error,
+  ErrorMessage,
 } from "./pagesStyle/LoginStyle"
 
 const Login = () => {
@@ -70,7 +70,9 @@ const Login = () => {
           Vous n’avez pas de compte ?<SignUp to="signup">M’inscrire</SignUp>
         </ToSignup>
         <Button onClick={onLogin} green content="Connexion" />
-        {hasErros && <Error>Mauvais mot de passe ou pseudo !</Error>}
+        {hasErros && (
+          <ErrorMessage>Mauvais mot de passe ou pseudo !</ErrorMessage>
+        )}
       </Form>
     </Wrapper>
   )
