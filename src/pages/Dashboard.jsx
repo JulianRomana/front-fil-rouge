@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import axios from "axios"
+import { axiosGet } from "../lib/axios"
 import DoughnutList from "../components/Charts/DoughnutList"
 import MainDoughnut from "../components/Charts/MainDoughnut"
 import QuestList from "../components/Quests/QuestList"
@@ -13,31 +13,22 @@ const DashboardPage = () => {
   const [totalActiveQuest, setTotalActiveQuest] = useState([])
 
   const fetchData = async () => {
-    const questsResults = await axios({
-      method: "get",
-      url: `${process.env.REACT_APP_API_URL}/api/quests`,
-      headers: { accept: "application/json" },
+    const questsResults = await axiosGet("api/quests")
+    const userQuestsResults = await axiosGet("api/user_quests", {
+      user_id: localStorage.getItem("id"),
     })
 
-    const userQuestsResults = await axios({
-      method: "get",
-      url: `${
-        process.env.REACT_APP_API_URL
-      }/api/user_quests?user_id=${localStorage.getItem("id")}`, // TODO: change with correct storage
-      headers: { accept: "application/json" },
-    })
-
-    const getCountFinishedQuests = userQuestsResults.data.filter(
+    const getCountFinishedQuests = userQuestsResults.filter(
       data => data.status === "finish",
     ).length
 
     const getCountFinishedQuestsByCategorie = category =>
-      userQuestsResults.data.filter(
+      userQuestsResults.filter(
         data => data.status === "finish" && data.questId.category === category,
       ).length
 
     const getTotalCountQuestsByCategorie = category =>
-      questsResults.data.filter(data => data.category === category).length
+      questsResults.filter(data => data.category === category).length
 
     const countTotalQuest = (finishedQuest, data) =>
       (finishedQuest / data) * 100
@@ -47,7 +38,7 @@ const DashboardPage = () => {
 
     const totalQuestsDone = countTotalQuest(
       getCountFinishedQuests,
-      questsResults.data.length,
+      questsResults.length,
     )
 
     const totalTrashQuestDone = countTotalQuest(
@@ -95,7 +86,7 @@ const DashboardPage = () => {
     })
 
     setTotalActiveQuest(
-      userQuestsResults.data.filter(data => data.status === "active"),
+      userQuestsResults.filter(data => data.status === "active"),
     )
   }
 
