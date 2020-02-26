@@ -1,105 +1,111 @@
-import React, { useEffect, useRef } from "react"
-import { Link } from "react-router-dom"
-import mapboxgl from "mapbox-gl"
-import Button from "../components/Button/Button"
-import ThemeIcon from "../assets/images/theme.svg"
-import QuestIcon from "../assets/images/quest.svg"
-import AccountIcon from "../assets/images/account.svg"
+import React, { useState, useEffect } from "react"
+import { axiosGet } from "../lib/axios"
+import DoughnutList from "../components/Charts/DoughnutList"
+import MainDoughnut from "../components/Charts/MainDoughnut"
+import QuestList from "../components/Quests/QuestList"
+import Graph from "../components/Charts/Graph"
 import { Title } from "./pagesStyle/SignupStyle"
-import { Main, ButtonList, Map, Text } from "./pagesStyle/DashboardStyle"
+import { Main, SubTitle } from "./pagesStyle/DashboardStyle"
 
-const Dashboard = () => {
-  const links = [
-    {
-      icon: ThemeIcon,
-      label: "Agir pour l'environnement",
-      url: "/environment",
-    },
-    {
-      icon: QuestIcon,
-      label: "Mes quêtes",
-      url: "/quests",
-    },
-    {
-      icon: AccountIcon,
-      label: "Mon profil",
-      url: "/account",
-    },
-  ]
+const DashboardPage = () => {
+  const [mainDoughnutData, setMainDoughnutData] = useState({})
+  const [doughnutDataList, setDoughnutDataList] = useState([])
+  const [totalActiveQuest, setTotalActiveQuest] = useState([])
 
-  const geojson = {
-    type: "FeatureCollection",
-    features: [
+  const fetchData = async () => {
+    const questsResults = await axiosGet("api/quests")
+    const userQuestsResults = await axiosGet("api/user_quests", {
+      user_id: localStorage.getItem("id"),
+    })
+
+    const getCountFinishedQuests = userQuestsResults.filter(
+      data => data.status === "finish",
+    ).length
+
+    const getCountFinishedQuestsByCategorie = category =>
+      userQuestsResults.filter(
+        data => data.status === "finish" && data.questId.category === category,
+      ).length
+
+    const getTotalCountQuestsByCategorie = category =>
+      questsResults.filter(data => data.category === category).length
+
+    const countTotalQuest = (finishedQuest, data) =>
+      (finishedQuest / data) * 100
+
+    const reduceTotalQuestFromDoneQuest = totalFinishedQuest =>
+      totalFinishedQuest === 100 ? 0 : 100 - totalFinishedQuest
+
+    const totalQuestsDone = countTotalQuest(
+      getCountFinishedQuests,
+      questsResults.length,
+    )
+
+    const totalTrashQuestDone = countTotalQuest(
+      getCountFinishedQuestsByCategorie("Déchets"),
+      getTotalCountQuestsByCategorie("Déchets"),
+    )
+
+    const totalHealthQuestDone = countTotalQuest(
+      getCountFinishedQuestsByCategorie("Manger responsable"),
+      getTotalCountQuestsByCategorie("Manger responsable"),
+    )
+
+    const totalPollutionQuestDone = countTotalQuest(
+      getCountFinishedQuestsByCategorie("Moins polluer"),
+      getTotalCountQuestsByCategorie("Moins polluer"),
+    )
+
+    setDoughnutDataList([
       {
-        type: "Feature",
-        geometry: {
-          type: "Point",
-          coordinates: [2.3514616, 48.8566969],
-        },
-        properties: {
-          title: "Lorem Ipsum",
-          description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        name: "Les déchets",
+        value: {
+          a: totalTrashQuestDone,
+          b: reduceTotalQuestFromDoneQuest(totalTrashQuestDone),
         },
       },
       {
-        type: "Feature",
-        geometry: {
-          type: "Point",
-          coordinates: [2.3380277, 48.8611473],
-        },
-        properties: {
-          title: "Lorem Ipsum",
-          description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        name: "Moins polluer",
+        value: {
+          a: totalPollutionQuestDone,
+          b: reduceTotalQuestFromDoneQuest(totalPollutionQuestDone),
         },
       },
-    ],
+      {
+        name: "Manger plus responsable",
+        value: {
+          a: totalHealthQuestDone,
+          b: reduceTotalQuestFromDoneQuest(totalHealthQuestDone),
+        },
+      },
+    ])
+
+    setMainDoughnutData({
+      a: totalQuestsDone,
+      b: reduceTotalQuestFromDoneQuest(totalQuestsDone),
+    })
+
+    setTotalActiveQuest(
+      userQuestsResults.filter(data => data.status === "active"),
+    )
   }
 
-  const mapContainer = useRef(null)
-
   useEffect(() => {
-    const map = new mapboxgl.Map({
-      container: mapContainer.current,
-      style: "mapbox://styles/mapbox/streets-v11",
-      minZoom: 10,
-      center: [2.3514616, 48.8566969],
-      accessToken: process.env.REACT_APP_MAPBOX_API,
-    })
-
-    geojson.features.forEach(marker => {
-      new mapboxgl.Marker()
-        .setLngLat(marker.geometry.coordinates)
-        .setPopup(
-          !marker.properties.count
-            ? new mapboxgl.Popup({ offset: 10 }).setHTML(
-                `<h6>${marker.properties.title}</h6><p>${marker.properties.description}</p>`,
-              )
-            : undefined,
-        )
-        .addTo(map)
-    })
-  })
+    fetchData()
+  }, [])
 
   return (
     <Main>
       <Title>Tableau de bord</Title>
-      <ButtonList>
-        {links.map((link, index) => (
-          <li key={index}>
-            <Link to={link.url}>
-              <img src={link.icon} alt={link.label} />
-              <p>{link.label}</p>
-            </Link>
-          </li>
-        ))}
-      </ButtonList>
-      <Text>Stades olympiques</Text>
-      <Map ref={mapContainer} />
-      <Button content="Déconnexion" red full margin="1rem 0 0 0" />
+      <SubTitle>Mes quêtes effectuées</SubTitle>
+      <MainDoughnut mainDoughnutData={mainDoughnutData} />
+      <DoughnutList doughnutDataList={doughnutDataList} />
+      <SubTitle>Activités effectuées par jour</SubTitle>
+      <Graph />
+      <SubTitle>Mes quêtes en cours</SubTitle>
+      <QuestList totalActiveQuest={totalActiveQuest} />
     </Main>
   )
 }
 
-export default Dashboard
+export default DashboardPage
