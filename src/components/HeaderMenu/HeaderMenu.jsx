@@ -21,7 +21,7 @@ const HeaderMenu = () => {
 
   const logoutUser = () => {
     localStorage.removeItem("user")
-    history.push("login")
+    history.push("/login")
   }
 
   return (

@@ -16,7 +16,7 @@ import {
 
 const Login = () => {
   const history = useHistory()
-  if (localStorage.getItem("user")) history.push("dashboard")
+  if (localStorage.getItem("user")) history.push("/dashboard")
   const [inputsValue, setInputsValue] = useState([])
   const [hasErros, setHasErrors] = useState(false)
 
@@ -36,7 +36,7 @@ const Login = () => {
     const response = await axiosGet("api/users", params)
     if (response.length) {
       localStorage.setItem("user", JSON.stringify(response[0]))
-      history.push("dashboard")
+      history.push("/dashboard")
     } else {
       setHasErrors(true)
     }

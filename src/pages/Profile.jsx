@@ -24,17 +24,17 @@ const Profile = () => {
     if (user) {
       setUser(JSON.parse(localStorage.getItem("user")))
     } else {
-      history.push("login")
+      history.push("/login")
     }
   }, [history])
   const toDashboard = () => {
-    history.push("dashboard")
+    history.push("/dashboard")
   }
 
   const deleteUser = () => {
     axiosDelete(`api/users/${user.id}`)
     localStorage.removeItem("user")
-    history.push("login")
+    history.push("/login")
   }
   return (
     <Wrapper>

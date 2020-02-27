@@ -17,7 +17,7 @@ import {
 
 const Signup = () => {
   const history = useHistory()
-  if (localStorage.getItem("user")) history.push("dashboard")
+  if (localStorage.getItem("user")) history.push("/dashboard")
   const [inputsValue, setInputValue] = useState([])
   const submitForm = async e => {
     e.preventDefault()
@@ -29,7 +29,7 @@ const Signup = () => {
       }, {})
     const response = await axiosPost("api/users", clearedData)
     localStorage.setItem("user", JSON.stringify(response))
-    history.push("dashboard")
+    history.push("/dashboard")
   }
 
   return (

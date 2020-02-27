@@ -48,7 +48,7 @@ const QuestCard = () => {
           <QuestDescription>Lieu: {city}</QuestDescription>
         </QuestContentContainer>
         <QuestImageContainer>
-          <QuestImage src={picture}></QuestImage>
+          <QuestImage src={picture} alt="" />
         </QuestImageContainer>
       </QuestFlatCard>
     )
@@ -63,7 +63,7 @@ const QuestCard = () => {
           <QuestDescription> Lieu: {city}</QuestDescription>
         </QuestContentContainer>
         <QuestImageContainer>
-          <QuestImage src={picture}></QuestImage>
+          <QuestImage src={picture} alt="" />
         </QuestImageContainer>
       </QuestFlatCardFinished>
     )
@@ -103,7 +103,7 @@ const QuestCard = () => {
                 Vous n&apos;avez pas ajouté ni terminé de quêtes
               </NoQuests>
 
-              <span onClick={() => history.push("environment")}>
+              <span onClick={() => history.push("/environment")}>
                 <Button green content="VOIR TOUTES LES QUETES" />
               </span>
             </>
