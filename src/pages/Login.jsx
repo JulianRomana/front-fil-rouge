@@ -15,9 +15,10 @@ import {
 } from "./pagesStyle/LoginStyle"
 
 const Login = () => {
+  const history = useHistory()
+  if (localStorage.getItem("user")) history.push("dashboard")
   const [inputsValue, setInputsValue] = useState([])
   const [hasErros, setHasErrors] = useState(false)
-  const history = useHistory()
 
   const onLogin = async e => {
     e.preventDefault()
@@ -34,7 +35,7 @@ const Login = () => {
 
     const response = await axiosGet("api/users", params)
     if (response.length) {
-      localStorage.setItem("user", JSON.stringify(...response))
+      localStorage.setItem("user", JSON.stringify(response[0]))
       history.push("dashboard")
     } else {
       setHasErrors(true)

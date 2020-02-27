@@ -26,8 +26,10 @@ const Profile = () => {
       history.push("login")
     }
   }, [history])
+  const toDashboard = () => {
+    history.push("dashboard")
+  }
 
-  const deleteAccount = () => {}
   return (
     <Wrapper>
       <Title>Mon Compte</Title>
@@ -53,10 +55,10 @@ const Profile = () => {
           <span>Inscrit depuis le</span>
         </UserInfo>
       </UserInfoContainer>
-      <Button green content="VOIR MES STATISTIQUES" />
-      <DeleteAccount onClick={deleteAccount}>
-        SUPPRIMER MON COMPTE
-      </DeleteAccount>
+      <span onClick={toDashboard}>
+        <Button green content="VOIR MES STATISTIQUES" />
+      </span>
+      <DeleteAccount>SUPPRIMER MON COMPTE</DeleteAccount>
     </Wrapper>
   )
 }

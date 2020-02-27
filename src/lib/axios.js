@@ -10,12 +10,17 @@ const axiosGet = async (url, params) => {
   return data
 }
 
-const axiosPost = async (url, data) => {
-  await axios.post(`${process.env.REACT_APP_API_URL}/${url}`, data, {
-    headers: {
-      accept: "application/json",
+const axiosPost = async (url, params) => {
+  const { data } = await axios.post(
+    `${process.env.REACT_APP_API_URL}/${url}`,
+    params,
+    {
+      headers: {
+        accept: "application/json",
+      },
     },
-  })
+  )
+  return data
 }
 
 const axiosDelete = async (url, params) => {
