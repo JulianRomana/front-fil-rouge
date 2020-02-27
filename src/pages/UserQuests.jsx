@@ -14,7 +14,7 @@ import {
   QuestImageContainer,
   QuestImage,
   QuestFlatCardFinished,
-} from "./pagesStyle/QuestStyle"
+} from "./pagesStyle/UserQuestsStyle"
 import Button from "../components/Button/Button"
 
 const QuestCard = () => {
