@@ -11,6 +11,7 @@ import SplashScreen from "./pages/SplashScreen"
 import Station from "./pages/Station"
 import Trash from "./pages/Trash"
 import UserQuests from "./pages/UserQuests"
+import QuestCard from "./components/QuestCard/QuestCard"
 
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
         <Route exact path="/login" component={Login} />
         <Route exact path="/profile" component={Profile} />
         <Route exact path="/user-quests" component={UserQuests} />
+        <Route path="/user-quest/:id" component={QuestCard} />
       </Switch>
     </Router>
   )

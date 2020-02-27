@@ -32,7 +32,7 @@ const QuestCard = () => {
   }, [setQuest])
 
   const questFlatCardActive = quest => {
-    const { title, description, city, picture } = quest.questId
+    const { title, city, picture } = quest.questId
     return (
       <QuestFlatCard key={quest.id}>
         <QuestContentContainer>
@@ -47,7 +47,7 @@ const QuestCard = () => {
   }
 
   const questFlatCardFinished = quest => {
-    const { title, description, city, picture } = quest.questId
+    const { title, city, picture } = quest.questId
     return (
       <QuestFlatCardFinished key={quest.id}>
         <QuestContentContainer>

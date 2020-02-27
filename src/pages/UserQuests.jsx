@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import { useHistory } from "react-router-dom"
 import { axiosGet } from "../lib/axios"
 import {
   Wrapper,
@@ -18,6 +19,8 @@ import {
 import Button from "../components/Button/Button"
 
 const QuestCard = () => {
+  const history = useHistory()
+  const [hasFetchedData, setHasFetchedData] = useState(false)
   const [quests, setQuest] = useState()
   const getUserQuest = async () => {
     const { id } = JSON.parse(localStorage.getItem("user"))
@@ -25,6 +28,11 @@ const QuestCard = () => {
       user_id: id,
     })
     setQuest(response)
+    setHasFetchedData(true)
+  }
+
+  const showQuest = quest => {
+    history.push(`/user-quest/${quest.id}`, { quest })
   }
 
   useEffect(() => {
@@ -32,9 +40,9 @@ const QuestCard = () => {
   }, [setQuest])
 
   const questFlatCardActive = quest => {
-    const { title, description, city, picture } = quest.questId
+    const { title, city, picture } = quest.questId
     return (
-      <QuestFlatCard key={quest.id}>
+      <QuestFlatCard onClick={() => showQuest(quest)} key={quest.id}>
         <QuestContentContainer>
           <QuestTitle>{title}</QuestTitle>
           <QuestDescription>Lieu: {city}</QuestDescription>
@@ -47,7 +55,7 @@ const QuestCard = () => {
   }
 
   const questFlatCardFinished = quest => {
-    const { title, description, city, picture } = quest.questId
+    const { title, city, picture } = quest.questId
     return (
       <QuestFlatCardFinished key={quest.id}>
         <QuestContentContainer>
@@ -88,8 +96,14 @@ const QuestCard = () => {
         </>
       ) : (
         <>
-          <NoQuests>Vous n&apos;avez pas ajouté ni terminé de quêtes</NoQuests>
-          <Button green content="VOIR TOUTES LES QUETES"></Button>
+          {hasFetchedData && (
+            <>
+              <NoQuests>
+                Vous n&apos;avez pas ajouté ni terminé de quêtes
+              </NoQuests>
+              <Button green content="VOIR TOUTES LES QUETES"></Button>
+            </>
+          )}
         </>
       )}
     </Wrapper>

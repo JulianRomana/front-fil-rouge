@@ -1,38 +1,32 @@
 import React from "react"
-import propTypes from "prop-types"
-import Button from "../components/Button/Button"
-import TrashIcon from "../assets/images/trash.svg"
-import { Title } from "./pagesStyle/SignupStyle"
-import {
-  Main,
-  ButtonCenter,
-  QuestTitle,
-  QuestContent,
-} from "./pagesStyle/QuestStyle"
+import { useLocation } from "react-router-dom"
+import Button from "../Button/Button"
+import { axiosPut } from "../../lib/axios"
+import { Main, Title, ButtonCenter, QuestContent } from "./QuestCardStyle"
 
-const QuestCard = ({ title, image, city }) => {
+const QuestCard = () => {
+  const quest = useLocation()
+  const { id: userQuestId } = quest.state.quest
+  const { title, picture, city } = quest.state.quest.questId
+  const putQuest = () => {
+    axiosPut(`api/user_quests/${userQuestId}`, {
+      date: new Date(),
+      Status: "finish",
+    })
+  }
   return (
     <Main>
       <Title>{title}</Title>
-      <QuestTitle>
-        <img src={TrashIcon} alt="Trash icon" />
-        <p>Les déchets</p>
-      </QuestTitle>
       <QuestContent>
-        <img src={image} alt="" />
+        <img src={picture} alt="" />
         <h4>{title}</h4>
-        <p>{city}</p>
+        <p>Lieu : {city}</p>
       </QuestContent>
-      <ButtonCenter>
-        <Button green content="Participer" />
+      <ButtonCenter onClick={putQuest}>
+        <Button green content="Valider la quête" />
       </ButtonCenter>
     </Main>
   )
 }
 
-QuestCard.propTypes = {
-  image: propTypes.string,
-  title: propTypes.string,
-  city: propTypes.string,
-}
 export default QuestCard

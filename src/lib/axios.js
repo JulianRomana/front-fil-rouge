@@ -29,4 +29,8 @@ const axiosDelete = async (url, params) => {
   })
 }
 
-export { axiosGet, axiosPost, axiosDelete }
+const axiosPut = async (url, params) => {
+  await axios.put(`${process.env.REACT_APP_API_URL}/${url}`, params)
+}
+
+export { axiosGet, axiosPost, axiosDelete, axiosPut }

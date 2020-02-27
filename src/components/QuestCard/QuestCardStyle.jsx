@@ -3,6 +3,10 @@ import styled from "styled-components"
 const Main = styled.main`
   padding: 7rem 1.5rem 2rem;
 `
+const Title = styled.h1`
+  text-align: left;
+  font-weight: bold;
+`
 const ButtonCenter = styled.div`
   display: flex;
   justify-content: center;
@@ -25,7 +29,7 @@ const QuestTitle = styled.div`
   }
 `
 const QuestContent = styled.div`
-  margin: 1rem 0 1.5rem;
+  margin: 7rem 0;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -40,12 +44,16 @@ const QuestContent = styled.div`
     object-fit: cover;
   }
   h4 {
+    width: 100%;
+    text-align: left;
     font-size: 1.5rem;
     margin-top: 1.5rem;
     font-weight: bold;
   }
   p {
+    width: 100%;
+    text-align: left;
     color: #000;
   }
 `
-export { Main, ButtonCenter, QuestTitle, QuestContent }
+export { Main, Title, ButtonCenter, QuestTitle, QuestContent }
