@@ -61,7 +61,12 @@ const QuestPage = () => {
         >
           <Button green content="Participer" />
         </ButtonCenter>
-        <Popup isClosed={isClosed} setIsClosed={setIsClosed} />
+        <Popup
+          isClosed={isClosed}
+          setIsClosed={setIsClosed}
+          title="Quête ajoutée !"
+          icon="add"
+        />
       </Container>
     </>
   )

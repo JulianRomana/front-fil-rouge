@@ -26,7 +26,7 @@ const Profile = () => {
     } else {
       history.push("/login")
     }
-  }, [history])
+  }, [history, user])
   const toDashboard = () => {
     history.push("/dashboard")
   }

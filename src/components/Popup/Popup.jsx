@@ -13,7 +13,7 @@ import {
   UserQuest,
 } from "./PopupStyle"
 
-const Popup = ({ isClosed, setIsClosed }) => {
+const Popup = ({ isClosed, setIsClosed, title, icon }) => {
   return (
     <>
       {isClosed && (
@@ -24,11 +24,10 @@ const Popup = ({ isClosed, setIsClosed }) => {
               alt="close"
               onClick={() => setIsClosed(!isClosed)}
             />
-            <Icon src={AddIcon} alt="icon" />
+            <Icon src={icon === "add" ? AddIcon : ValidIcon} alt="icon" />
             <Content>
-              <Title>Quête ajoutée !</Title>
-              <UserQuest to="">Voir mes quêtes</UserQuest>
-              {/* TODO: add correct path */}
+              <Title>{title}</Title>
+              <UserQuest to="/user-quests">Voir mes quêtes</UserQuest>
             </Content>
           </Box>
         </Container>
@@ -40,6 +39,8 @@ const Popup = ({ isClosed, setIsClosed }) => {
 Popup.propTypes = {
   isClosed: PropTypes.bool,
   setIsClosed: PropTypes.func,
+  title: PropTypes.string,
+  icon: PropTypes.string,
 }
 
 export default Popup

@@ -32,7 +32,7 @@ const QuestCard = () => {
   }
 
   const showQuest = quest => {
-    history.push(`/user-quest/${quest.id}`, { quest })
+    history.push(`/user-quests/${quest.id}`, { quest })
   }
 
   useEffect(() => {
