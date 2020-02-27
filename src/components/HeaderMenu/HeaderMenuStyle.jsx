@@ -23,23 +23,35 @@ const ItemsContainer = styled.div`
 `
 const Environment = styled(Link)`
   display: flex;
-  font-size: 2.4rem;
   color: ${white};
+
+  span {
+    font-size: 2.4rem;
+  }
 `
 const Profile = styled(Link)`
   display: flex;
-  font-size: 2.4rem;
   color: ${white};
+
+  span {
+    font-size: 2.4rem;
+  }
 `
 const Quests = styled(Link)`
   display: flex;
-  font-size: 2.4rem;
   color: ${white};
+
+  span {
+    font-size: 2.4rem;
+  }
 `
 const Logout = styled.div`
   display: flex;
-  font-size: 2.4rem;
   cursor: pointer;
+
+  span {
+    font-size: 2.4rem;
+  }
 `
 const Icon = styled.img``
 const ItemText = styled.span`

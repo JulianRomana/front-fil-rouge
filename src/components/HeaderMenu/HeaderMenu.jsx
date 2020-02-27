@@ -21,7 +21,7 @@ const HeaderMenu = () => {
 
   const logoutUser = () => {
     localStorage.removeItem("user")
-    history.push("login")
+    history.push("/login")
   }
 
   return (
@@ -35,7 +35,7 @@ const HeaderMenu = () => {
           <Icon src={ProfileIcon} alt="" />
           <ItemText>MON PROFIL</ItemText>
         </Profile>
-        <Quests to="/quest">
+        <Quests to="/user-quests">
           <Icon src={QuestIcon} alt="" />
           <ItemTextLarger> MES QUÊTES</ItemTextLarger>
         </Quests>

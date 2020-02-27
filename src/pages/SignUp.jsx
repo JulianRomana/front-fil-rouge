@@ -16,8 +16,9 @@ import {
 } from "./pagesStyle/SignupStyle"
 
 const Signup = () => {
-  const [inputsValue, setInputValue] = useState([])
   const history = useHistory()
+  if (localStorage.getItem("user")) history.push("/dashboard")
+  const [inputsValue, setInputValue] = useState([])
   const submitForm = async e => {
     e.preventDefault()
     if (inputsValue.length < 4) return
@@ -26,9 +27,9 @@ const Signup = () => {
       .reduce((accumulator, nextVal) => {
         return { ...accumulator, ...nextVal }
       }, {})
-    await axiosPost("api/users", clearedData)
-    localStorage.setItem("user", JSON.stringify(clearedData))
-    history.push("dashboard")
+    const response = await axiosPost("api/users", clearedData)
+    localStorage.setItem("user", JSON.stringify(response))
+    history.push("/dashboard")
   }
 
   return (

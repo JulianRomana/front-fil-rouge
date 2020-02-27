@@ -9,7 +9,6 @@ const Wrapper = styled.section`
   padding: 0 2rem 5rem;
 `
 const Title = styled.h1`
-  font-size: 4rem;
   font-weight: bold;
   margin-bottom: 9rem;
 `

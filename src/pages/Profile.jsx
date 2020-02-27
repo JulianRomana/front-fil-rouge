@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { useHistory } from "react-router-dom"
+import { axiosDelete } from "../lib/axios"
 import {
   Wrapper,
   Title,
@@ -23,11 +24,18 @@ const Profile = () => {
     if (user) {
       setUser(JSON.parse(localStorage.getItem("user")))
     } else {
-      history.push("login")
+      history.push("/login")
     }
   }, [history])
+  const toDashboard = () => {
+    history.push("/dashboard")
+  }
 
-  const deleteAccount = () => {}
+  const deleteUser = () => {
+    axiosDelete(`api/users/${user.id}`)
+    localStorage.removeItem("user")
+    history.push("/login")
+  }
   return (
     <Wrapper>
       <Title>Mon Compte</Title>
@@ -53,10 +61,10 @@ const Profile = () => {
           <span>Inscrit depuis le</span>
         </UserInfo>
       </UserInfoContainer>
-      <Button green content="VOIR MES STATISTIQUES" />
-      <DeleteAccount onClick={deleteAccount}>
-        SUPPRIMER MON COMPTE
-      </DeleteAccount>
+      <span onClick={toDashboard}>
+        <Button green content="VOIR MES STATISTIQUES" />
+      </span>
+      <DeleteAccount onClick={deleteUser}>SUPPRIMER MON COMPTE</DeleteAccount>
     </Wrapper>
   )
 }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { useHistory } from "react"
+import { useHistory } from "react-router-dom"
 import { axiosGet } from "../lib/axios"
 import {
   Wrapper,
@@ -15,11 +15,12 @@ import {
   QuestImageContainer,
   QuestImage,
   QuestFlatCardFinished,
-} from "./pagesStyle/QuestStyle"
+} from "./pagesStyle/UserQuestsStyle"
 import Button from "../components/Button/Button"
 
 const QuestCard = () => {
   const history = useHistory()
+  const [hasFetchedData, setHasFetchedData] = useState(false)
   const [quests, setQuest] = useState()
   const getUserQuest = async () => {
     const { id } = JSON.parse(localStorage.getItem("user"))
@@ -27,6 +28,11 @@ const QuestCard = () => {
       user_id: id,
     })
     setQuest(response)
+    setHasFetchedData(true)
+  }
+
+  const showQuest = quest => {
+    history.push(`/user-quest/${quest.id}`, { quest })
   }
 
   useEffect(() => {
@@ -36,13 +42,13 @@ const QuestCard = () => {
   const questFlatCardActive = quest => {
     const { title, city, picture } = quest.questId
     return (
-      <QuestFlatCard key={quest.id}>
+      <QuestFlatCard onClick={() => showQuest(quest)} key={quest.id}>
         <QuestContentContainer>
           <QuestTitle>{title}</QuestTitle>
           <QuestDescription>Lieu: {city}</QuestDescription>
         </QuestContentContainer>
         <QuestImageContainer>
-          <QuestImage src={picture}></QuestImage>
+          <QuestImage src={picture} alt="" />
         </QuestImageContainer>
       </QuestFlatCard>
     )
@@ -57,7 +63,7 @@ const QuestCard = () => {
           <QuestDescription> Lieu: {city}</QuestDescription>
         </QuestContentContainer>
         <QuestImageContainer>
-          <QuestImage src={picture}></QuestImage>
+          <QuestImage src={picture} alt="" />
         </QuestImageContainer>
       </QuestFlatCardFinished>
     )
@@ -68,6 +74,7 @@ const QuestCard = () => {
   const hasFinishedQuests = () => {
     return quests.find(quest => quest.status === "finish")
   }
+
   return (
     <Wrapper>
       <Title>Mes quêtes</Title>
@@ -90,8 +97,17 @@ const QuestCard = () => {
         </>
       ) : (
         <>
-          <NoQuests>Vous n&apos;avez pas ajouté ni terminé de quêtes</NoQuests>
-          <Button green content="VOIR LES QUETES"></Button>
+          {hasFetchedData && (
+            <>
+              <NoQuests>
+                Vous n&apos;avez pas ajouté ni terminé de quêtes
+              </NoQuests>
+
+              <span onClick={() => history.push("/environment")}>
+                <Button green content="VOIR TOUTES LES QUETES" />
+              </span>
+            </>
+          )}
         </>
       )}
     </Wrapper>
