@@ -4,8 +4,8 @@ import { green } from "../../assets/jsxStyles/Variables"
 const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
-  margin-top: 4rem;
-  padding: 0 2rem;
+  align-items: center;
+  padding: 4rem 2rem;
 `
 const Title = styled.h1`
   font-weight: bold;
@@ -20,6 +20,7 @@ const PendingQuests = styled.h2`
 const QuestsContainer = styled.div`
   display: grid;
   grid-gap: 2rem;
+  width: 100%;
 `
 const DoneQuests = styled.h2`
   margin-top: 3.4rem;

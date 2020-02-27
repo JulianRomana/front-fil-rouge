@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import { useHistory } from "react"
 import { axiosGet } from "../lib/axios"
 import {
   Wrapper,
@@ -18,6 +19,7 @@ import {
 import Button from "../components/Button/Button"
 
 const QuestCard = () => {
+  const history = useHistory()
   const [quests, setQuest] = useState()
   const getUserQuest = async () => {
     const { id } = JSON.parse(localStorage.getItem("user"))
@@ -89,7 +91,7 @@ const QuestCard = () => {
       ) : (
         <>
           <NoQuests>Vous n&apos;avez pas ajouté ni terminé de quêtes</NoQuests>
-          <Button green content="VOIR TOUTES LES QUETES"></Button>
+          <Button green content="VOIR LES QUETES"></Button>
         </>
       )}
     </Wrapper>

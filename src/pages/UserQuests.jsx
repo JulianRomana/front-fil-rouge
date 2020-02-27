@@ -74,6 +74,7 @@ const QuestCard = () => {
   const hasFinishedQuests = () => {
     return quests.find(quest => quest.status === "finish")
   }
+
   return (
     <Wrapper>
       <Title>Mes quêtes</Title>
@@ -101,7 +102,10 @@ const QuestCard = () => {
               <NoQuests>
                 Vous n&apos;avez pas ajouté ni terminé de quêtes
               </NoQuests>
-              <Button green content="VOIR TOUTES LES QUETES"></Button>
+
+              <span onClick={() => history.push("environment")}>
+                <Button green content="VOIR TOUTES LES QUETES" />
+              </span>
             </>
           )}
         </>
