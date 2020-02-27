@@ -1,101 +1,70 @@
-import React, { useState, useEffect } from "react"
-import { useHistory } from "react"
-import { axiosGet } from "../lib/axios"
-import {
-  Wrapper,
-  Title,
-  PendingQuests,
-  DoneQuests,
-  NoQuests,
-  QuestFlatCard,
-  QuestTitle,
-  QuestsContainer,
-  QuestContentContainer,
-  QuestDescription,
-  QuestImageContainer,
-  QuestImage,
-  QuestFlatCardFinished,
-} from "./pagesStyle/QuestStyle"
+import React, { useState } from "react"
+import { useParams } from "react-router-dom"
 import Button from "../components/Button/Button"
+import Popup from "../components/Popup/Popup"
+import TrashIcon from "../assets/images/trash.svg"
+import { axiosGet, axiosPost } from "../lib/axios"
+import {
+  ButtonCenter,
+  Container,
+  Content,
+  Title,
+  SubTitle,
+} from "./pagesStyle/QuestStyle"
 
-const QuestCard = () => {
-  const history = useHistory()
-  const [quests, setQuest] = useState()
-  const getUserQuest = async () => {
-    const { id } = JSON.parse(localStorage.getItem("user"))
-    const response = await axiosGet(`api/user_quests`, {
-      user_id: id,
-    })
-    setQuest(response)
-  }
+const QuestPage = () => {
+  const [isClosed, setIsClosed] = useState(false)
+  const [data, setData] = useState({})
+  const { id } = useParams()
+  const user = JSON.parse(localStorage.getItem("user"))
 
-  useEffect(() => {
-    getUserQuest()
-  }, [setQuest])
+  const fetchData = async id => {
+    const results = await axiosGet(`api/quests/${id}`)
 
-  const questFlatCardActive = quest => {
-    const { title, city, picture } = quest.questId
-    return (
-      <QuestFlatCard key={quest.id}>
-        <QuestContentContainer>
-          <QuestTitle>{title}</QuestTitle>
-          <QuestDescription>Lieu: {city}</QuestDescription>
-        </QuestContentContainer>
-        <QuestImageContainer>
-          <QuestImage src={picture}></QuestImage>
-        </QuestImageContainer>
-      </QuestFlatCard>
-    )
+    setData(results)
   }
 
-  const questFlatCardFinished = quest => {
-    const { title, city, picture } = quest.questId
-    return (
-      <QuestFlatCardFinished key={quest.id}>
-        <QuestContentContainer>
-          <QuestTitle>{title}</QuestTitle>
-          <QuestDescription> Lieu: {city}</QuestDescription>
-        </QuestContentContainer>
-        <QuestImageContainer>
-          <QuestImage src={picture}></QuestImage>
-        </QuestImageContainer>
-      </QuestFlatCardFinished>
-    )
+  const addQuest = async () => {
+    try {
+      await axiosPost("api/user_quests", {
+        userId: `/api/users/${user.id}`,
+        questId: `/api/quests/${id}`,
+        Status: "active",
+        date: new Date(),
+      })
+    } catch (err) {
+      console.error("add user quest error", err)
+    }
   }
-  const hasActiveQuests = () => {
-    return quests.find(quest => quest.status === "active")
-  }
-  const hasFinishedQuests = () => {
-    return quests.find(quest => quest.status === "finish")
-  }
+
+  useState(() => {
+    fetchData(id)
+  }, [])
+
   return (
-    <Wrapper>
-      <Title>Mes quêtes</Title>
-
-      {quests && quests.length ? (
-        <>
-          <QuestsContainer>
-            {hasActiveQuests() && <PendingQuests>En cours</PendingQuests>}
-            {quests.map(
-              quest => quest.status === "active" && questFlatCardActive(quest),
-            )}
-          </QuestsContainer>
-          <QuestsContainer>
-            {hasFinishedQuests() && <DoneQuests>Terminées</DoneQuests>}
-            {quests.map(
-              quest =>
-                quest.status === "finish" && questFlatCardFinished(quest),
-            )}
-          </QuestsContainer>
-        </>
-      ) : (
-        <>
-          <NoQuests>Vous n&apos;avez pas ajouté ni terminé de quêtes</NoQuests>
-          <Button green content="VOIR LES QUETES"></Button>
-        </>
-      )}
-    </Wrapper>
+    <>
+      <Container>
+        <Title>{data.title}</Title>
+        <SubTitle>
+          <img src={TrashIcon} alt="Trash" />
+          <p>{data.category}</p>
+        </SubTitle>
+        <Content>
+          <img src={data.picture} alt="Quest" />
+          <h4>{data.description}</h4>
+        </Content>
+        <ButtonCenter
+          onClick={() => {
+            addQuest()
+            setIsClosed(!isClosed)
+          }}
+        >
+          <Button green content="Participer" />
+        </ButtonCenter>
+        <Popup isClosed={isClosed} setIsClosed={setIsClosed} />
+      </Container>
+    </>
   )
 }
 
-export default QuestCard
+export default QuestPage

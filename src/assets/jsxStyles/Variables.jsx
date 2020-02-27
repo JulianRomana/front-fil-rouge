@@ -4,5 +4,6 @@ const green = "#1b9a5a"
 const grey = "#808080"
 const greyLighter = "#d9d9d9"
 const red = "#e23636"
+const beige = "#f8f5ee"
 
-export { white, black, green, grey, greyLighter, red }
+export { white, black, green, grey, greyLighter, red, beige }

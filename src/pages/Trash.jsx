@@ -45,7 +45,7 @@ const Trash = () => {
     },
     {
       label: "Green Walk",
-      url: "/green-walk",
+      url: "/greenwalk",
     },
     {
       label: "Réparer vos objets",

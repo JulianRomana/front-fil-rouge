@@ -9,9 +9,13 @@ import Quest from "./pages/Quest"
 import Signup from "./pages/SignUp"
 import SplashScreen from "./pages/SplashScreen"
 import Station from "./pages/Station"
+import Velib from "./pages/Velib"
+import Restaurant from "./pages/Restaurant"
+import Scooter from "./pages/Scooter"
 import Trash from "./pages/Trash"
 import UserQuests from "./pages/UserQuests"
 import QuestCard from "./components/QuestCard/QuestCard"
+import GreenWalk from "./pages/GreenWalk"
 
 const App = () => {
   return (
@@ -24,11 +28,15 @@ const App = () => {
         <Route exact path="/environment" component={Environment} />
         <Route exact path="/trash" component={Trash} />
         <Route exact path="/station" component={Station} />
-        <Route exact path="/quest" component={Quest} />
+        <Route exact path="/scooter" component={Scooter} />
+        <Route exact path="/greenwalk" component={GreenWalk} />
+        <Route exact path="/restaurant" component={Restaurant} />
+        <Route exact path="/velib" component={Velib} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/profile" component={Profile} />
         <Route exact path="/user-quests" component={UserQuests} />
         <Route path="/user-quests/:id" component={QuestCard} />
+        <Route path="/quest/:id" component={Quest} />
       </Switch>
     </Router>
   )

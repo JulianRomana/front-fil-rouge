@@ -4,9 +4,10 @@ import styled from "styled-components"
 import { axiosGet } from "../lib/axios"
 import MapBox from "../components/Map/MapBox"
 import { black, green, white } from "../assets/jsxStyles/Variables"
-import Tips from "./../components/Tips/Tips"
+import Tips from "../components/Tips/Tips"
+import moment from "moment"
 
-const StationPage = () => {
+const ScooterPage = () => {
   const [geo, setGeo] = useState([])
   const [quest, setQuest] = useState([])
   const [showMap, setShowMap] = useState(true)
@@ -29,7 +30,6 @@ const StationPage = () => {
       border-radius: 0 0 3rem 3rem;
     }
   `
-
   const Container = styled.main`
     padding: 7rem 1.5rem 2rem;
   `
@@ -80,29 +80,34 @@ const StationPage = () => {
   `
 
   const fetchData = async () => {
-    const results = await axiosGet("trash")
+    const results = await axiosGet("api/greenwalks")
     const quests = await axiosGet("api/quests")
-    setQuest(quests.filter(quest => quest.category === "Déchets"))
-
-    const points = results.records.reduce((accumulator, data) => {
+    const trashQuest = quests.filter(quest => quest.category === "Déchets")
+    const points = results.reduce((accumulator, data) => {
       accumulator.push({
         type: "Feature",
         geometry: {
           type: "Point",
-          coordinates: data.geometry.coordinates,
+          coordinates: data.geo,
         },
         properties: {
-          description: `${data.fields.adresse}, ${data.fields.code_postal}`,
+          description: `<b>${data.description}</b><br/>${data.adress}, ${
+            data.city
+          } ${data.postalCode}<br/>Le ${moment(data.date).format(
+            "DD MMM YYYY à HH:mm",
+          )}`,
         },
       })
       return accumulator
     }, [])
 
     setGeo(points)
+    setQuest(trashQuest)
   }
 
   useEffect(() => {
     fetchData()
+
     containerRef.current.previousSibling.style.color = showMap ? white : black
   }, [showMap])
 
@@ -110,7 +115,7 @@ const StationPage = () => {
     <Container ref={containerRef}>
       <Header>
         <Title>Les déchets</Title>
-        <SubTitle>Nombre de station de tri de déchets : {geo.length}</SubTitle>
+        <SubTitle>Nombre de green walk : {geo.length}</SubTitle>
       </Header>
       <Tips
         title="Apprendre à faire le tri"
@@ -134,4 +139,4 @@ const StationPage = () => {
   )
 }
 
-export default StationPage
+export default ScooterPage
