@@ -7,42 +7,43 @@ import SquaresIcon from "../../assets/images/icons/squares.svg"
 import {
   OpenedMenu,
   ItemsContainer,
-  Environment,
-  Profile,
-  Quests,
+  MenuLink,
   Logout,
   Icon,
-  ItemText,
-  ItemTextLarger,
+  Text,
 } from "./HeaderMenuStyle"
 
 const HeaderMenu = () => {
   const history = useHistory()
+  const user = JSON.parse(localStorage.getItem("user"))
 
   const logoutUser = () => {
     localStorage.removeItem("user")
     history.push("/login")
   }
 
+  const menu = [
+    { link: "/dashboard", label: "Tableau de bord", icon: ProfileIcon },
+    { link: "/home", label: "Agir pour l'environnment", icon: SquaresIcon },
+    { link: "/profile", label: "Mon profil", icon: ProfileIcon },
+    { link: "/user-quests", label: "Mes quêtes", icon: QuestIcon },
+  ]
+
   return (
     <OpenedMenu>
       <ItemsContainer>
-        <Environment to="/home">
-          <Icon src={SquaresIcon} alt="squares icon" />
-          <ItemText>AGIR POUR L’ENVIRONNEMENT</ItemText>
-        </Environment>
-        <Profile to="/profile">
-          <Icon src={ProfileIcon} alt="" />
-          <ItemText>MON PROFIL</ItemText>
-        </Profile>
-        <Quests to="/user-quests">
-          <Icon src={QuestIcon} alt="" />
-          <ItemTextLarger> MES QUÊTES</ItemTextLarger>
-        </Quests>
-        <Logout onClick={logoutUser}>
-          <Icon src={LogoutIcon} alt="logout icon" />
-          <ItemText>DÉCONNEXION</ItemText>
-        </Logout>
+        {menu.map((menu, index) => (
+          <MenuLink to={menu.link} key={index}>
+            <Icon src={menu.icon} alt={menu.label} />
+            <Text>{menu.label}</Text>
+          </MenuLink>
+        ))}
+        {user && (
+          <Logout onClick={logoutUser}>
+            <Icon src={LogoutIcon} alt="Logout Icon" />
+            <Text>Déconnexion</Text>
+          </Logout>
+        )}
       </ItemsContainer>
     </OpenedMenu>
   )
