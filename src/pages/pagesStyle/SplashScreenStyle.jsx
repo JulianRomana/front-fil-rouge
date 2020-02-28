@@ -14,6 +14,7 @@ const Main = styled.main`
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   height: 100%;
 `

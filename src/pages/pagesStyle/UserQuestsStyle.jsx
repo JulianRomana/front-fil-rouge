@@ -4,7 +4,7 @@ import { green, white } from "../../assets/jsxStyles/Variables"
 const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
-  padding: 7rem 2rem;
+  padding: 7rem 2rem 2rem;
 `
 const Title = styled.h1`
   font-weight: bold;

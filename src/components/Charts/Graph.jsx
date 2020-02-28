@@ -6,7 +6,6 @@ import { green } from "../../assets/jsxStyles/Variables"
 import moment from "moment"
 
 const Graph = ({ totalFinishQuest }) => {
-  console.log("TCL: Graph -> totalFinishQuest", totalFinishQuest)
   const Container = styled.div`
     display: flex;
     justify-content: center;
@@ -14,11 +13,9 @@ const Graph = ({ totalFinishQuest }) => {
     margin-top: 1.5rem;
   `
   const currentDay = moment(new Date()).format("DD")
-
   const filterDate = day =>
     totalFinishQuest.filter(data => day === moment(data.date).format("DD"))
       .length
-
   const data = [
     { date: currentDay - 4, finish: filterDate(currentDay - 4) },
     { date: currentDay - 3, finish: filterDate(currentDay - 3) },
@@ -26,7 +23,6 @@ const Graph = ({ totalFinishQuest }) => {
     { date: currentDay - 1, finish: filterDate(currentDay - 1) },
     { date: currentDay, finish: filterDate(currentDay) },
   ]
-
   const d3Container = useRef(null)
   const margin = { top: 10, right: 30, bottom: 30, left: 50 }
   const width = 300 - margin.left - margin.right

@@ -32,7 +32,7 @@ const ScooterPage = () => {
   `
 
   const Container = styled.main`
-    padding: 7rem 2rem;
+    padding: 7rem 2rem 2rem;
   `
   const Title = styled.h1`
     text-align: left;
@@ -121,10 +121,6 @@ const ScooterPage = () => {
         <Title>Manger responsable</Title>
         <SubTitle>Nombre de restaurants responsable : {count}</SubTitle>
       </Header>
-      <Tips
-        title="Apprendre à faire le tri"
-        description="Remplacer les consommables jetables par des alternatives plus durables."
-      />
       <Quest>Quête(s) disponible(s)</Quest>
       <QuestList>
         {quest.map(quest => (

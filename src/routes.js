@@ -32,6 +32,6 @@ export const routes = [
       link: "/health",
       icon: HealthIcon,
     },
-    themes: [],
+    themes: [{ label: "Les restaurants responsable", link: "/restaurant" }],
   },
 ]

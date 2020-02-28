@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 const Main = styled.main`
-  padding: 7rem 2rem;
+  padding: 7rem 2rem 2rem;
 `
 const Title = styled.h1`
   text-align: left;

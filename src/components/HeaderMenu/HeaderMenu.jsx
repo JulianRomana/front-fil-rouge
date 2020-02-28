@@ -1,15 +1,10 @@
 import React from "react"
 import { useHistory } from "react-router-dom"
-import LogoutIcon from "../../assets/images/icons/logout.svg"
-import ProfileIcon from "../../assets/images/icons/profile.svg"
-import QuestIcon from "../../assets/images/icons/quest.svg"
-import SquaresIcon from "../../assets/images/icons/squares.svg"
 import {
   OpenedMenu,
   ItemsContainer,
   MenuLink,
   Logout,
-  Icon,
   Text,
 } from "./HeaderMenuStyle"
 
@@ -23,35 +18,16 @@ const HeaderMenu = () => {
   }
 
   const menu = [
-    {
-      logged: user,
-
-      link: "/dashboard",
-      label: "Tableau de bord",
-      icon: ProfileIcon,
-    },
+    { logged: user, link: "/dashboard", label: "Tableau de bord" },
     {
       logged: true,
       link: "/home",
       label: "Agir pour l'environnment",
-      icon: SquaresIcon,
     },
-    {
-      logged: user,
-
-      link: "/profile",
-      label: "Mon profil",
-      icon: ProfileIcon,
-    },
-    {
-      logged: user,
-
-      link: "/user-quests",
-      label: "Mes quêtes",
-      icon: QuestIcon,
-    },
-    { logged: !user, link: "/login", label: "Se connecter", icon: QuestIcon },
-    { logged: !user, link: "/siginup", label: "S'inscrire", icon: QuestIcon },
+    { logged: user, link: "/profile", label: "Mon profil" },
+    { logged: user, link: "/user-quests", label: "Mes quêtes" },
+    { logged: !user, link: "/login", label: "Se connecter" },
+    { logged: !user, link: "/siginup", label: "S'inscrire" },
   ]
 
   return (
@@ -61,7 +37,6 @@ const HeaderMenu = () => {
           return (
             menu.logged && (
               <MenuLink to={menu.link} key={menu.label}>
-                <Icon src={menu.icon} alt={menu.label} />
                 <Text>{menu.label}</Text>
               </MenuLink>
             )
@@ -69,7 +44,6 @@ const HeaderMenu = () => {
         })}
         {user && (
           <Logout onClick={logoutUser}>
-            <Icon src={LogoutIcon} alt="Logout Icon" />
             <Text>Déconnexion</Text>
           </Logout>
         )}

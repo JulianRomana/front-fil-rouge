@@ -4,7 +4,7 @@ import { black } from "../../assets/jsxStyles/Variables"
 
 const Wrapper = styled.section`
   height: 100%;
-  padding: 7rem 2rem;
+  padding: 7rem 2rem 2rem;
 `
 const Title = styled.h1`
   color: ${black};

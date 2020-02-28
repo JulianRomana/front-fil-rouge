@@ -31,10 +31,7 @@ const Logout = styled.div`
   align-items: center;
   cursor: pointer;
 `
-const Icon = styled.img`
-  height: 40px;
-  width: 40px;
-`
+
 const Text = styled.p`
   margin-left: 3.5rem;
   font-size: 2.4rem;
@@ -43,4 +40,4 @@ const Text = styled.p`
   color: ${white};
 `
 
-export { OpenedMenu, ItemsContainer, MenuLink, Logout, Icon, Text }
+export { OpenedMenu, ItemsContainer, MenuLink, Logout, Text }

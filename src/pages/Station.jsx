@@ -32,7 +32,7 @@ const StationPage = () => {
   `
 
   const Container = styled.main`
-    padding: 7rem 2rem;
+    padding: 7rem 2rem 2rem;
   `
   const Title = styled.h1`
     text-align: left;
