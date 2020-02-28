@@ -1,82 +1,57 @@
 import styled from "styled-components"
-import { green } from "../../assets/jsxStyles/Variables"
+import { black } from "../../assets/jsxStyles/Variables"
 
-const Wrapper = styled.section`
+const Container = styled.main`
+  padding: 7rem 1.5rem 2rem;
+`
+const ButtonCenter = styled.div`
   display: flex;
-  flex-direction: column;
-  margin-top: 4rem;
-  padding: 0 2rem;
+  justify-content: center;
+`
+const SubTitle = styled.div`
+  margin: 2rem 0;
+  font-size: 2rem;
+  color: rgba(0, 0, 0, 0.25);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  img {
+    height: 2.5rem;
+    width: 2.5rem;
+    margin-right: 1rem;
+  }
+  p {
+    font-weight: bold;
+    color: #000;
+    font-size: 2.5rem;
+    text-transform: initial;
+  }
 `
 const Title = styled.h1`
-  font-weight: bold;
+  color: ${black};
   text-align: left;
-`
-const PendingQuests = styled.h2`
-  margin-top: 3.4rem;
-  font-size: 3rem;
-  font-weight: bold;
-  text-align: left;
-`
-const QuestsContainer = styled.div`
-  display: grid;
-  grid-gap: 2rem;
-`
-const DoneQuests = styled.h2`
-  margin-top: 3.4rem;
-  font-size: 3rem;
-  font-weight: bold;
-  text-align: left;
-`
-const NoQuests = styled.p`
-  text-align: center;
-  margin: 5rem 0;
-`
-const QuestFlatCard = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 2.1rem 1.2rem;
-  width: 100%;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.05);
-  border-radius: 10px;
-`
-const QuestFlatCardFinished = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 2.1rem 1.2rem;
-  width: 100%;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.05);
-  background-color: ${green};
-  border-radius: 10px;
-`
-const QuestTitle = styled.span`
   font-weight: bold;
 `
-const QuestImageContainer = styled.div`
-  width: 6rem;
-  height: 6rem;
-  border-radius: 50%;
-`
-const QuestContentContainer = styled.div`
+const Content = styled.div`
+  margin: 2rem 0;
   display: flex;
   flex-direction: column;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.05);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  img {
+    height: 50vh;
+    width: 100%;
+    object-fit: contain;
+  }
+  h4 {
+    font-size: 1.6rem;
+    margin-top: 1.5rem;
+    font-weight: bold;
+  }
+  p {
+    color: #000;
+  }
 `
-const QuestDescription = styled.span``
-const QuestImage = styled.img``
-
-export {
-  Wrapper,
-  Title,
-  PendingQuests,
-  DoneQuests,
-  NoQuests,
-  QuestsContainer,
-  QuestFlatCard,
-  QuestTitle,
-  QuestDescription,
-  QuestImage,
-  QuestContentContainer,
-  QuestImageContainer,
-  QuestFlatCardFinished,
-}
+export { Container, ButtonCenter, Title, SubTitle, Content }

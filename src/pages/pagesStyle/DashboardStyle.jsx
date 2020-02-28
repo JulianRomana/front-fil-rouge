@@ -12,11 +12,5 @@ const MainDoughnut = styled.div`
   align-items: center;
   justify-content: center;
 `
-const DoughnutList = styled.div`
-  margin-top: 2rem;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
-`
 
-export { Main, MainDoughnut, SubTitle, DoughnutList }
+export { Main, SubTitle, MainDoughnut }

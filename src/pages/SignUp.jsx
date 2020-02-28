@@ -77,7 +77,7 @@ const Signup = () => {
           Vous avez un compte ?<SignInLink to="login">Me connecter</SignInLink>
         </Signin>
         <Button onClick={submitForm} green content="S'inscrire" />
-        <GuestLink to="/dashboard">Continuer en tant qu’inviter</GuestLink>
+        <GuestLink to="/home">Continuer en tant qu’inviter</GuestLink>
       </Form>
     </Wrapper>
   )

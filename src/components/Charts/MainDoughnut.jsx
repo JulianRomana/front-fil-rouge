@@ -9,7 +9,6 @@ const MainDougnut = ({ mainDoughnutData }) => {
   const width = 280
   const height = 300
   const radius = Math.min(width, height) / 2
-
   const color = d3.scaleOrdinal().range([green, greyLighter])
   const pie = d3
     .pie()
@@ -54,12 +53,7 @@ const MainDougnut = ({ mainDoughnutData }) => {
 
   return (
     <MainDoughnut>
-      <svg
-        className="d3-component"
-        width={400}
-        height={200}
-        ref={d3Container}
-      />
+      <svg ref={d3Container} />
     </MainDoughnut>
   )
 }

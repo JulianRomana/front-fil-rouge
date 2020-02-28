@@ -17,21 +17,18 @@ const QuestList = ({ totalActiveQuest }) => {
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.05);
     border-radius: 1rem;
     margin-bottom: 1rem;
-    .content {
-      display: flex;
-      flex-direction: column;
-    }
-    p {
-      font-weight: bold;
-    }
-    img {
-      height: 25px;
-      width: 25px;
-    }
     a {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      p {
+        font-weight: bold;
+      }
+      img {
+        height: 80px;
+        width: 80px;
+        object-fit: cover;
+      }
     }
   `
 
@@ -42,16 +39,14 @@ const QuestList = ({ totalActiveQuest }) => {
           {totalActiveQuest.map(({ questId }) => (
             <Item key={questId.id}>
               <Link to="">
-                <div className="content">
-                  <p>{questId.description}</p>
-                  <span>Lieu: {questId.address}</span>
-                </div>
+                <p>{questId.description}</p>
+                <img src={questId.picture} alt="Quest" />
               </Link>
             </Item>
           ))}
         </>
       ) : (
-        <p>Vous n&#39;avez aucune quêtes en cours.</p>
+        <p>Vous n&#39;avez aucune quête en cours.</p>
       )}
     </QuestList>
   )

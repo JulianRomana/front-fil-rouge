@@ -4,12 +4,12 @@ import styled from "styled-components"
 import { axiosGet } from "../lib/axios"
 import MapBox from "../components/Map/MapBox"
 import { black, green, white } from "../assets/jsxStyles/Variables"
-import Tips from "./../components/Tips/Tips"
+import Tips from "../components/Tips/Tips"
 
-const StationPage = () => {
+const ScooterPage = () => {
   const [geo, setGeo] = useState({})
-  const [quest, setQuest] = useState([])
   const [count, setCount] = useState(0)
+  const [quest, setQuest] = useState([])
   const [showMap, setShowMap] = useState(true)
   const containerRef = useRef(null)
 
@@ -81,41 +81,45 @@ const StationPage = () => {
   `
 
   const fetchData = async () => {
-    const results = await axiosGet("trash")
+    const results = await axiosGet("trottinette")
     const quests = await axiosGet("api/quests")
+    const pollutionQuest = quests.filter(
+      quest => quest.category === "Moins polluer",
+    )
+    const points = results.records
+      .map(data => data.fields.geo_shape.coordinates[0])
+      .reduce((accumulator, data) => {
+        data.map(data =>
+          accumulator.push({
+            type: "Feature",
+            geometry: {
+              type: "Point",
+              coordinates: data,
+            },
+          }),
+        )
+        return accumulator
+      }, [])
 
-    const points = results.records.reduce((accumulator, data) => {
-      accumulator.push({
-        type: "Feature",
-        properties: {
-          description: `${data.fields.adresse}, ${data.fields.code_postal}`,
-        },
-        geometry: {
-          type: "Point",
-          coordinates: data.geometry.coordinates,
-        },
-      })
-      return accumulator
-    }, [])
-
+    setQuest(pollutionQuest)
     setGeo({
       type: "FeatureCollection",
       features: points,
     })
     setCount(points.length)
-    setQuest(quests.filter(quest => quest.category === "Déchets"))
   }
 
   useEffect(() => {
     fetchData()
+
     containerRef.current.previousSibling.style.color = showMap ? white : black
   }, [showMap])
 
   return (
     <Container ref={containerRef}>
       <Header>
-        <Title>Les déchets</Title>
-        <SubTitle>Nombre de station de tri de déchets : {count}</SubTitle>
+        <Title>Moins polluer</Title>
+        <SubTitle>Nombre de trottinette : {count}</SubTitle>
       </Header>
       <Tips
         title="Apprendre à faire le tri"
@@ -139,4 +143,4 @@ const StationPage = () => {
   )
 }
 
-export default StationPage
+export default ScooterPage

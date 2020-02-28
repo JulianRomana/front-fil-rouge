@@ -5,6 +5,10 @@ import * as serviceWorker from "./serviceWorker"
 import "mapbox-gl/dist/mapbox-gl.css"
 import "./assets/scss/styles.scss"
 
+import moment from "moment"
+import "moment/min/locales"
+
+moment.locale("fr")
 require("dotenv").config()
 
 ReactDOM.render(<App />, document.getElementById("root"))

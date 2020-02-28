@@ -11,11 +11,12 @@ const DashboardPage = () => {
   const [mainDoughnutData, setMainDoughnutData] = useState({})
   const [doughnutDataList, setDoughnutDataList] = useState([])
   const [totalActiveQuest, setTotalActiveQuest] = useState([])
+  const user = JSON.parse(localStorage.getItem("user"))
 
   const fetchData = async () => {
     const questsResults = await axiosGet("api/quests")
     const userQuestsResults = await axiosGet("api/user_quests", {
-      user_id: localStorage.getItem("id"),
+      user_id: user.id,
     })
 
     const getCountFinishedQuests = userQuestsResults.filter(
@@ -31,7 +32,7 @@ const DashboardPage = () => {
       questsResults.filter(data => data.category === category).length
 
     const countTotalQuest = (finishedQuest, data) =>
-      (finishedQuest / data) * 100
+      Math.round((finishedQuest / data) * 100)
 
     const reduceTotalQuestFromDoneQuest = totalFinishedQuest =>
       totalFinishedQuest === 100 ? 0 : 100 - totalFinishedQuest

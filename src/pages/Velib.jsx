@@ -4,12 +4,12 @@ import styled from "styled-components"
 import { axiosGet } from "../lib/axios"
 import MapBox from "../components/Map/MapBox"
 import { black, green, white } from "../assets/jsxStyles/Variables"
-import Tips from "./../components/Tips/Tips"
+import Tips from "../components/Tips/Tips"
 
-const StationPage = () => {
+const VelibPage = () => {
   const [geo, setGeo] = useState({})
-  const [quest, setQuest] = useState([])
   const [count, setCount] = useState(0)
+  const [quest, setQuest] = useState([])
   const [showMap, setShowMap] = useState(true)
   const containerRef = useRef(null)
 
@@ -81,29 +81,43 @@ const StationPage = () => {
   `
 
   const fetchData = async () => {
-    const results = await axiosGet("trash")
+    const results = await axiosGet("velib")
     const quests = await axiosGet("api/quests")
-
+    const pollutionQuest = quests.filter(
+      quest => quest.category === "Moins polluer",
+    )
     const points = results.records.reduce((accumulator, data) => {
-      accumulator.push({
-        type: "Feature",
-        properties: {
-          description: `${data.fields.adresse}, ${data.fields.code_postal}`,
-        },
-        geometry: {
-          type: "Point",
-          coordinates: data.geometry.coordinates,
-        },
-      })
+      if (data.fields.nbebike + data.fields.nbbike > 0) {
+        accumulator.push({
+          type: "Feature",
+          geometry: {
+            type: "Point",
+            coordinates: data.geometry.coordinates,
+          },
+          properties: {
+            description: `<b>${data.fields.nbebike +
+              data.fields.nbbike} vélib' disponible </b><br/>
+              ${data.fields.station_name}`,
+          },
+        })
+      }
       return accumulator
     }, [])
 
+    const totalCount = results.records.reduce((accumulator, data) => {
+      if (data.fields.nbebike + data.fields.nbbike > 0) {
+        accumulator =
+          Number(accumulator) + data.fields.nbebike + data.fields.nbbike
+      }
+      return accumulator
+    }, [])
+
+    setQuest(pollutionQuest)
+    setCount(totalCount)
     setGeo({
       type: "FeatureCollection",
       features: points,
     })
-    setCount(points.length)
-    setQuest(quests.filter(quest => quest.category === "Déchets"))
   }
 
   useEffect(() => {
@@ -114,8 +128,8 @@ const StationPage = () => {
   return (
     <Container ref={containerRef}>
       <Header>
-        <Title>Les déchets</Title>
-        <SubTitle>Nombre de station de tri de déchets : {count}</SubTitle>
+        <Title>Moins polluer</Title>
+        <SubTitle>Nombre de velibs disponible : {count}</SubTitle>
       </Header>
       <Tips
         title="Apprendre à faire le tri"
@@ -139,4 +153,4 @@ const StationPage = () => {
   )
 }
 
-export default StationPage
+export default VelibPage

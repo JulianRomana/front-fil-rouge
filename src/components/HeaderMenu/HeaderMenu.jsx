@@ -27,7 +27,7 @@ const HeaderMenu = () => {
   return (
     <OpenedMenu>
       <ItemsContainer>
-        <Environment to="/environment">
+        <Environment to="/home">
           <Icon src={SquaresIcon} alt="squares icon" />
           <ItemText>AGIR POUR L’ENVIRONNEMENT</ItemText>
         </Environment>

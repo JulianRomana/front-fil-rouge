@@ -1,7 +1,20 @@
-.mapboxgl-ctrl-bottom {
+.mapboxgl {
+  &-ctrl-bottom {
 
-  &-left,
-  &-right {
-    display: none;
+    &-left,
+    &-right {
+      display: none;
+    }
+  }
+
+  &-popup {
+    &-content {
+      padding: 1rem;
+      text-transform: capitalize;
+    }
+
+    &-close-button {
+      display: none;
+    }
   }
 }

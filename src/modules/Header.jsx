@@ -26,6 +26,7 @@ const Header = () => {
   const showBackArrow = () => {
     if (
       pathname === "/" ||
+      pathname === "/home" ||
       pathname === "/dashboard" ||
       pathname === "/signup" ||
       pathname === "/login"

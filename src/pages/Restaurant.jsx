@@ -4,9 +4,9 @@ import styled from "styled-components"
 import { axiosGet } from "../lib/axios"
 import MapBox from "../components/Map/MapBox"
 import { black, green, white } from "../assets/jsxStyles/Variables"
-import Tips from "./../components/Tips/Tips"
+import Tips from "../components/Tips/Tips"
 
-const StationPage = () => {
+const ScooterPage = () => {
   const [geo, setGeo] = useState({})
   const [quest, setQuest] = useState([])
   const [count, setCount] = useState(0)
@@ -81,41 +81,45 @@ const StationPage = () => {
   `
 
   const fetchData = async () => {
-    const results = await axiosGet("trash")
+    const results = await axiosGet("api/restaurants")
     const quests = await axiosGet("api/quests")
 
-    const points = results.records.reduce((accumulator, data) => {
+    const healthQuest = quests.filter(
+      quest => quest.category === "Manger responsable",
+    )
+    const points = results.reduce((accumulator, data) => {
       accumulator.push({
         type: "Feature",
-        properties: {
-          description: `${data.fields.adresse}, ${data.fields.code_postal}`,
-        },
         geometry: {
           type: "Point",
-          coordinates: data.geometry.coordinates,
+          coordinates: data.geo,
+        },
+        properties: {
+          description: `<b>${data.description}</b><br/>${data.adress}, ${data.city} ${data.postalCode}<br/>`,
         },
       })
       return accumulator
     }, [])
 
+    setQuest(healthQuest)
     setGeo({
       type: "FeatureCollection",
       features: points,
     })
     setCount(points.length)
-    setQuest(quests.filter(quest => quest.category === "Déchets"))
   }
 
   useEffect(() => {
     fetchData()
+
     containerRef.current.previousSibling.style.color = showMap ? white : black
   }, [showMap])
 
   return (
     <Container ref={containerRef}>
       <Header>
-        <Title>Les déchets</Title>
-        <SubTitle>Nombre de station de tri de déchets : {count}</SubTitle>
+        <Title>Manger responsable</Title>
+        <SubTitle>Nombre de restaurants responsable : {count}</SubTitle>
       </Header>
       <Tips
         title="Apprendre à faire le tri"
@@ -139,4 +143,4 @@ const StationPage = () => {
   )
 }
 
-export default StationPage
+export default ScooterPage
