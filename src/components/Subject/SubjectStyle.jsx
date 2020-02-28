@@ -2,7 +2,7 @@ import styled from "styled-components"
 import { black } from "../../assets/jsxStyles/Variables"
 
 const Container = styled.section`
-  padding: 7rem 1.5rem 2rem;
+  padding: 7rem 2rem;
 `
 const Title = styled.h1`
   color: ${black};

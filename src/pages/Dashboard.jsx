@@ -11,6 +11,7 @@ const DashboardPage = () => {
   const [mainDoughnutData, setMainDoughnutData] = useState({})
   const [doughnutDataList, setDoughnutDataList] = useState([])
   const [totalActiveQuest, setTotalActiveQuest] = useState([])
+  const [totalFinishQuest, setTotalFinishQuest] = useState([])
   const user = JSON.parse(localStorage.getItem("user"))
 
   const fetchData = async () => {
@@ -89,6 +90,9 @@ const DashboardPage = () => {
     setTotalActiveQuest(
       userQuestsResults.filter(data => data.status === "active"),
     )
+    setTotalFinishQuest(
+      userQuestsResults.filter(data => data.status === "finish"),
+    )
   }
 
   useEffect(() => {
@@ -102,7 +106,7 @@ const DashboardPage = () => {
       <MainDoughnut mainDoughnutData={mainDoughnutData} />
       <DoughnutList doughnutDataList={doughnutDataList} />
       <SubTitle>Activités effectuées par jour</SubTitle>
-      <Graph />
+      <Graph totalFinishQuest={totalFinishQuest} />
       <SubTitle>Mes quêtes en cours</SubTitle>
       <QuestList totalActiveQuest={totalActiveQuest} />
     </Main>

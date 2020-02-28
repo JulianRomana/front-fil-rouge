@@ -29,7 +29,9 @@ const Header = () => {
       pathname === "/home" ||
       pathname === "/dashboard" ||
       pathname === "/signup" ||
-      pathname === "/login"
+      pathname === "/login" ||
+      pathname === "/profile" ||
+      pathname === "/user-quests"
     ) {
       return "hidden"
     } else {

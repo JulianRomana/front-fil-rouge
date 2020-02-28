@@ -5,8 +5,7 @@ const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 4rem;
-  padding: 0 2rem;
+  padding: 7rem 2rem;
 `
 const Title = styled.h1`
   width: 100%;

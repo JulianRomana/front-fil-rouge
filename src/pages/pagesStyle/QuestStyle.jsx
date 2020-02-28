@@ -2,7 +2,7 @@ import styled from "styled-components"
 import { black } from "../../assets/jsxStyles/Variables"
 
 const Container = styled.main`
-  padding: 7rem 1.5rem 2rem;
+  padding: 7rem 2rem;
 `
 const ButtonCenter = styled.div`
   display: flex;

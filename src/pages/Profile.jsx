@@ -38,7 +38,7 @@ const Profile = () => {
   }
   return (
     <Wrapper>
-      <Title>Mon Compte</Title>
+      <Title>Mon compte</Title>
       <UserProfilePicture src={ProfilePlaceholder} />
       <Username>{user.username}</Username>
       <UserInfoContainer>

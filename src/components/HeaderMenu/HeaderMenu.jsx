@@ -23,21 +23,50 @@ const HeaderMenu = () => {
   }
 
   const menu = [
-    { link: "/dashboard", label: "Tableau de bord", icon: ProfileIcon },
-    { link: "/home", label: "Agir pour l'environnment", icon: SquaresIcon },
-    { link: "/profile", label: "Mon profil", icon: ProfileIcon },
-    { link: "/user-quests", label: "Mes quêtes", icon: QuestIcon },
+    {
+      logged: user,
+
+      link: "/dashboard",
+      label: "Tableau de bord",
+      icon: ProfileIcon,
+    },
+    {
+      logged: true,
+      link: "/home",
+      label: "Agir pour l'environnment",
+      icon: SquaresIcon,
+    },
+    {
+      logged: user,
+
+      link: "/profile",
+      label: "Mon profil",
+      icon: ProfileIcon,
+    },
+    {
+      logged: user,
+
+      link: "/user-quests",
+      label: "Mes quêtes",
+      icon: QuestIcon,
+    },
+    { logged: !user, link: "/login", label: "Se connecter", icon: QuestIcon },
+    { logged: !user, link: "/siginup", label: "S'inscrire", icon: QuestIcon },
   ]
 
   return (
     <OpenedMenu>
       <ItemsContainer>
-        {menu.map((menu, index) => (
-          <MenuLink to={menu.link} key={index}>
-            <Icon src={menu.icon} alt={menu.label} />
-            <Text>{menu.label}</Text>
-          </MenuLink>
-        ))}
+        {menu.map((menu, index) => {
+          return (
+            menu.logged && (
+              <MenuLink to={menu.link} key={menu.label}>
+                <Icon src={menu.icon} alt={menu.label} />
+                <Text>{menu.label}</Text>
+              </MenuLink>
+            )
+          )
+        })}
         {user && (
           <Logout onClick={logoutUser}>
             <Icon src={LogoutIcon} alt="Logout Icon" />
