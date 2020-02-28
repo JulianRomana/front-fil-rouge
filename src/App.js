@@ -27,7 +27,6 @@ const App = () => {
         <Route exact path="/home" render={() => <Home routes={routes} />} />
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/dashboard" component={Dashboard} />
-        {/* TODO: refacto map component on one */}
         <Route exact path="/order" component={Station} />
         <Route exact path="/scooter" component={Scooter} />
         <Route exact path="/greenwalk" component={GreenWalk} />

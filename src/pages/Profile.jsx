@@ -77,7 +77,6 @@ const Profile = () => {
           </Icon>
           <span>
             Inscrit depuis le : <b>{moment().format("LL")}</b>
-            {/* TODO: add created date of current user */}
           </span>
         </UserInfo>
       </UserInfoContainer>
