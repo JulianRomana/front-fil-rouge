@@ -103,7 +103,7 @@ const QuestCard = () => {
                 Vous n&apos;avez pas ajouté ni terminé de quêtes
               </NoQuests>
 
-              <span onClick={() => history.push("/environment")}>
+              <span onClick={() => history.push("/home")}>
                 <Button green content="VOIR TOUTES LES QUETES" />
               </span>
             </>
