@@ -42,33 +42,31 @@ const QuestPage = () => {
   }, [])
 
   return (
-    <>
-      <Container>
-        <Title>{data.title}</Title>
-        <SubTitle>
-          <img src={TrashIcon} alt="Trash" />
-          <p>{data.category}</p>
-        </SubTitle>
-        <Content>
-          <img src={data.picture} alt="Quest" />
-          <h4>{data.description}</h4>
-        </Content>
-        <ButtonCenter
-          onClick={() => {
-            addQuest()
-            setIsClosed(!isClosed)
-          }}
-        >
-          <Button green content="Participer" />
-        </ButtonCenter>
-        <Popup
-          isClosed={isClosed}
-          setIsClosed={setIsClosed}
-          title="Quête ajoutée !"
-          icon="add"
-        />
-      </Container>
-    </>
+    <Container>
+      <Title>{data.title}</Title>
+      <SubTitle>
+        <img src={TrashIcon} alt="Trash" />
+        <p>{data.category}</p>
+      </SubTitle>
+      <Content>
+        <img src={data.picture} alt="Quest" />
+        <h4>{data.description}</h4>
+      </Content>
+      <ButtonCenter
+        onClick={() => {
+          addQuest()
+          setIsClosed(!isClosed)
+        }}
+      >
+        <Button green content="Participer" />
+      </ButtonCenter>
+      <Popup
+        isClosed={isClosed}
+        setIsClosed={setIsClosed}
+        title="Quête ajoutée !"
+        icon="add"
+      />
+    </Container>
   )
 }
 
