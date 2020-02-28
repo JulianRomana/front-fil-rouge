@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { useHistory } from "react-router-dom"
-import { axiosDelete } from "../lib/axios"
+import { axiosDelete, axiosGet } from "../lib/axios"
 import {
   Wrapper,
   Title,
@@ -16,11 +16,26 @@ import Email from "../assets/images/icons/email.svg"
 import Calendar from "../assets/images/icons/calendar.svg"
 import Button from "../components/Button/Button"
 import ProfilePlaceholder from "../assets/images/icons/profilePlaceholder.svg"
+import moment from "moment"
 
 const Profile = () => {
   const history = useHistory()
+  const [finishedQuestCount, setFinishedQuestCount] = useState(0)
   const [user, setUser] = useState(!!localStorage.getItem("user"))
+
+  const fetchData = async () => {
+    const userQuestsResults = await axiosGet("api/user_quests", {
+      user_id: user.id,
+    })
+
+    const getCountFinishedQuests = userQuestsResults.filter(
+      data => data.status === "finish",
+    ).length
+
+    setFinishedQuestCount(getCountFinishedQuests)
+  }
   useEffect(() => {
+    fetchData()
     if (user) {
       setUser(JSON.parse(localStorage.getItem("user")))
     } else {
@@ -46,7 +61,9 @@ const Profile = () => {
           <Icon>
             <img src={Medal} alt="" />
           </Icon>
-          <span>Nombre d’activités effectuées :</span>
+          <span>
+            Nombre d’activités effectuées : <b>{finishedQuestCount}</b>
+          </span>
         </UserInfo>
         <UserInfo>
           <Icon>
@@ -58,7 +75,10 @@ const Profile = () => {
           <Icon>
             <img src={Calendar} alt="" />
           </Icon>
-          <span>Inscrit depuis le</span>
+          <span>
+            Inscrit depuis le : <b>{moment().format("LL")}</b>
+            {/* TODO: add created date of current user */}
+          </span>
         </UserInfo>
       </UserInfoContainer>
       <span onClick={toDashboard}>

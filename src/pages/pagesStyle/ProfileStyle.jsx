@@ -40,11 +40,15 @@ const Icon = styled.div`
   display: flex;
   justify-content: center;
   margin-right: 1.5rem;
-  padding: 0.5rem;
-  width: 3.6rem;
-  height: 3.6rem;
+  padding: 1rem;
+  width: 4rem;
+  height: 4rem;
   border-radius: 50%;
   background-color: ${green};
+  img {
+    height: 100%;
+    object-fit: contain;
+  }
 `
 const DeleteAccount = styled.span`
   text-decoration: underline;
