@@ -7,8 +7,9 @@ import { black, green, white } from "../assets/jsxStyles/Variables"
 import Tips from "./../components/Tips/Tips"
 
 const StationPage = () => {
-  const [geo, setGeo] = useState([])
+  const [geo, setGeo] = useState({})
   const [quest, setQuest] = useState([])
+  const [count, setCount] = useState(0)
   const [showMap, setShowMap] = useState(true)
   const containerRef = useRef(null)
 
@@ -82,23 +83,27 @@ const StationPage = () => {
   const fetchData = async () => {
     const results = await axiosGet("trash")
     const quests = await axiosGet("api/quests")
-    setQuest(quests.filter(quest => quest.category === "Déchets"))
 
     const points = results.records.reduce((accumulator, data) => {
       accumulator.push({
         type: "Feature",
+        properties: {
+          description: `${data.fields.adresse}, ${data.fields.code_postal}`,
+        },
         geometry: {
           type: "Point",
           coordinates: data.geometry.coordinates,
-        },
-        properties: {
-          description: `${data.fields.adresse}, ${data.fields.code_postal}`,
         },
       })
       return accumulator
     }, [])
 
-    setGeo(points)
+    setGeo({
+      type: "FeatureCollection",
+      features: points,
+    })
+    setCount(points.length)
+    setQuest(quests.filter(quest => quest.category === "Déchets"))
   }
 
   useEffect(() => {
@@ -110,7 +115,7 @@ const StationPage = () => {
     <Container ref={containerRef}>
       <Header>
         <Title>Les déchets</Title>
-        <SubTitle>Nombre de station de tri de déchets : {geo.length}</SubTitle>
+        <SubTitle>Nombre de station de tri de déchets : {count}</SubTitle>
       </Header>
       <Tips
         title="Apprendre à faire le tri"

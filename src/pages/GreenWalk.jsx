@@ -8,8 +8,9 @@ import Tips from "../components/Tips/Tips"
 import moment from "moment"
 
 const ScooterPage = () => {
-  const [geo, setGeo] = useState([])
+  const [geo, setGeo] = useState({})
   const [quest, setQuest] = useState([])
+  const [count, setCount] = useState(0)
   const [showMap, setShowMap] = useState(true)
   const containerRef = useRef(null)
 
@@ -101,8 +102,12 @@ const ScooterPage = () => {
       return accumulator
     }, [])
 
-    setGeo(points)
+    setGeo({
+      type: "FeatureCollection",
+      features: points,
+    })
     setQuest(trashQuest)
+    setCount(points.length)
   }
 
   useEffect(() => {
@@ -115,7 +120,7 @@ const ScooterPage = () => {
     <Container ref={containerRef}>
       <Header>
         <Title>Les déchets</Title>
-        <SubTitle>Nombre de green walk : {geo.length}</SubTitle>
+        <SubTitle>Nombre de green walk : {count}</SubTitle>
       </Header>
       <Tips
         title="Apprendre à faire le tri"

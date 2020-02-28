@@ -7,8 +7,8 @@ import { black, green, white } from "../assets/jsxStyles/Variables"
 import Tips from "../components/Tips/Tips"
 
 const VelibPage = () => {
-  const [geo, setGeo] = useState([])
-  let [count, setCount] = useState(0)
+  const [geo, setGeo] = useState({})
+  const [count, setCount] = useState(0)
   const [quest, setQuest] = useState([])
   const [showMap, setShowMap] = useState(true)
   const containerRef = useRef(null)
@@ -95,8 +95,9 @@ const VelibPage = () => {
             coordinates: data.geometry.coordinates,
           },
           properties: {
-            count: data.fields.nbebike + data.fields.nbbike,
-            description: data.fields.station_name,
+            description: `<b>${data.fields.nbebike +
+              data.fields.nbbike} vélib' disponible </b><br/>
+              ${data.fields.station_name}`,
           },
         })
       }
@@ -113,7 +114,10 @@ const VelibPage = () => {
 
     setQuest(pollutionQuest)
     setCount(totalCount)
-    setGeo(points)
+    setGeo({
+      type: "FeatureCollection",
+      features: points,
+    })
   }
 
   useEffect(() => {

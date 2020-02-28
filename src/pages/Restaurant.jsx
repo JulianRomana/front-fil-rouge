@@ -7,8 +7,9 @@ import { black, green, white } from "../assets/jsxStyles/Variables"
 import Tips from "../components/Tips/Tips"
 
 const ScooterPage = () => {
-  const [geo, setGeo] = useState([])
+  const [geo, setGeo] = useState({})
   const [quest, setQuest] = useState([])
+  const [count, setCount] = useState(0)
   const [showMap, setShowMap] = useState(true)
   const containerRef = useRef(null)
 
@@ -101,7 +102,11 @@ const ScooterPage = () => {
     }, [])
 
     setQuest(healthQuest)
-    setGeo(points)
+    setGeo({
+      type: "FeatureCollection",
+      features: points,
+    })
+    setCount(points.length)
   }
 
   useEffect(() => {
@@ -114,7 +119,7 @@ const ScooterPage = () => {
     <Container ref={containerRef}>
       <Header>
         <Title>Manger responsable</Title>
-        <SubTitle>Nombre de restaurants responsable : {geo.length}</SubTitle>
+        <SubTitle>Nombre de restaurants responsable : {count}</SubTitle>
       </Header>
       <Tips
         title="Apprendre à faire le tri"

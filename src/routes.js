@@ -22,9 +22,8 @@ export const routes = [
       icon: PollutionIcon,
     },
     themes: [
-      { label: "", link: "" },
-      { label: "", link: "" },
-      { label: "", link: "" },
+      { label: "Les vélib'", link: "bike" },
+      { label: "Les trottinettes", link: "scooter" },
     ],
   },
   {
@@ -33,10 +32,6 @@ export const routes = [
       link: "health",
       icon: HealthIcon,
     },
-    themes: [
-      { label: "", link: "" },
-      { label: "", link: "" },
-      { label: "", link: "" },
-    ],
+    themes: [],
   },
 ]

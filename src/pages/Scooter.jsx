@@ -7,8 +7,8 @@ import { black, green, white } from "../assets/jsxStyles/Variables"
 import Tips from "../components/Tips/Tips"
 
 const ScooterPage = () => {
-  const [geo, setGeo] = useState([])
-  let [count, setCount] = useState(0)
+  const [geo, setGeo] = useState({})
+  const [count, setCount] = useState(0)
   const [quest, setQuest] = useState([])
   const [showMap, setShowMap] = useState(true)
   const containerRef = useRef(null)
@@ -86,30 +86,27 @@ const ScooterPage = () => {
     const pollutionQuest = quests.filter(
       quest => quest.category === "Moins polluer",
     )
-    const points = results.records.reduce((accumulator, data) => {
-      accumulator.push({
-        type: "Feature",
-        geometry: {
-          type: "Point",
-          coordinates: data.geometry.coordinates,
-        },
-        properties: {
-          count: Math.floor(Math.random() * 5) + 1,
-          description: `${data.fields.adresse}, ${data.fields.code_postal}`,
-        },
-      })
-      return accumulator
-    }, [])
-
-    const totalCount = points.reduce((accumulator, data) => {
-      accumulator = Number(accumulator) + data.properties.count
-
-      return accumulator
-    }, [])
+    const points = results.records
+      .map(data => data.fields.geo_shape.coordinates[0])
+      .reduce((accumulator, data) => {
+        data.map(data =>
+          accumulator.push({
+            type: "Feature",
+            geometry: {
+              type: "Point",
+              coordinates: data,
+            },
+          }),
+        )
+        return accumulator
+      }, [])
 
     setQuest(pollutionQuest)
-    setCount(totalCount)
-    setGeo(points)
+    setGeo({
+      type: "FeatureCollection",
+      features: points,
+    })
+    setCount(points.length)
   }
 
   useEffect(() => {

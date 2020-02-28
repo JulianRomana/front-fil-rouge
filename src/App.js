@@ -31,7 +31,7 @@ const App = () => {
         <Route exact path="/scooter" component={Scooter} />
         <Route exact path="/greenwalk" component={GreenWalk} />
         <Route exact path="/restaurant" component={Restaurant} />
-        <Route exact path="/velib" component={Velib} />
+        <Route exact path="/bike" component={Velib} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/profile" component={Profile} />
         <Route exact path="/user-quests" component={UserQuests} />
