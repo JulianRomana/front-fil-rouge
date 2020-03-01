@@ -33,7 +33,8 @@ yarn lint
 
 ## Technologie
 
-- [React](https://reactjs.org/s)
+- [React](https://reactjs.org/)
+- [Styled components](https://styled-components.com/)
 
 ## Bibliothèques utilisées
 
@@ -57,7 +58,7 @@ yarn lint
 
 - [Husky](https://github.com/typicode/husky)
 
-  Un git hook qui sera lancé avant un `commit` ainsi qu'un `push`, avec `yarn lint` avant chaque processus, meilleur moyen de contrôle les erreurs due au code
+  Un git hook qui sera lancé avant un `commit` ainsi qu'un `push` avec `yarn lint` avant chaque processus, meilleur moyen de contrôle les erreurs due au code
 
 - [Prettier](https://prettier.io/)
 
@@ -65,7 +66,7 @@ yarn lint
 
 - [Eslint](https://eslint.org/)
 
-Nous renforçons notre `code quality` avec des règles définies dans `.eslintrc` couplé avec ceux de `prettier`, ce qui nous permet de produire du code propre sans qu'on soit à faire de review dessus
+  Nous renforçons notre `code quality` avec des règles définies dans `.eslintrc` couplé avec ceux de `prettier`, ce qui nous permet de produire du code propre sans qu'on est à faire de review dessus
 
 - [Commit convention](https://www.conventionalcommits.org/fr/)
 
