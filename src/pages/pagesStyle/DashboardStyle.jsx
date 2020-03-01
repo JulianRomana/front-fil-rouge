@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 const Main = styled.main`
-  padding: 7rem 1.5rem 2rem;
+  padding: 7rem 2rem 2rem;
 `
 const SubTitle = styled.h2`
   margin-top: 2rem;

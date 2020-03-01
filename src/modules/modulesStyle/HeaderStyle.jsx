@@ -9,8 +9,8 @@ const IconsWrapper = styled.header`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 1rem;
-  height: 5rem;
+  padding: 2rem;
+  height: 7rem;
 `
 
 export { IconsWrapper }

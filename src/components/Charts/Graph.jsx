@@ -1,23 +1,28 @@
 import React, { useRef, useEffect } from "react"
 import * as d3 from "d3"
+import PropTypes from "prop-types"
 import styled from "styled-components"
 import { green } from "../../assets/jsxStyles/Variables"
+import moment from "moment"
 
-const Graph = () => {
+const Graph = ({ totalFinishQuest }) => {
   const Container = styled.div`
     display: flex;
     justify-content: center;
     width: 100%;
     margin-top: 1.5rem;
   `
+  const currentDay = moment(new Date()).format("DD")
+  const filterDate = day =>
+    totalFinishQuest.filter(data => day === moment(data.date).format("DD"))
+      .length
   const data = [
-    { date: 22, finish: 2 },
-    { date: 23, finish: 3 },
-    { date: 24, finish: 1 },
-    { date: 25, finish: 1 },
-    { date: 26, finish: 0 },
-  ] // TODO: change with correct data
-
+    { date: currentDay - 4, finish: filterDate(currentDay - 4) },
+    { date: currentDay - 3, finish: filterDate(currentDay - 3) },
+    { date: currentDay - 2, finish: filterDate(currentDay - 2) },
+    { date: currentDay - 1, finish: filterDate(currentDay - 1) },
+    { date: currentDay, finish: filterDate(currentDay) },
+  ]
   const d3Container = useRef(null)
   const margin = { top: 10, right: 30, bottom: 30, left: 50 }
   const width = 300 - margin.left - margin.right
@@ -31,7 +36,7 @@ const Graph = () => {
 
     var y = d3
       .scaleLinear()
-      .domain([0, d3.max(data.map(data => +data.finish))])
+      .domain([0, 5])
       .range([height, 0])
 
     var svg = d3
@@ -42,7 +47,12 @@ const Graph = () => {
       .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
 
-    svg.append("g").call(d3.axisLeft(y).ticks(4))
+    svg.append("g").call(
+      d3
+        .axisLeft(y)
+        .ticks(5)
+        .tickFormat(d3.format(".0s")),
+    )
 
     svg
       .append("g")
@@ -66,6 +76,10 @@ const Graph = () => {
   }, [data, height, margin, width])
 
   return <Container ref={d3Container} />
+}
+
+Graph.propTypes = {
+  totalFinishQuest: PropTypes.array,
 }
 
 export default Graph

@@ -41,7 +41,7 @@ const App = () => {
         {routes.map(({ category, themes }) => (
           <Route
             key={category.link}
-            path={`/${category.link}`}
+            path={category.link}
             render={() => <Subject themes={themes} />}
           />
         ))}

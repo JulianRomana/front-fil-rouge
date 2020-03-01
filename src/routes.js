@@ -6,32 +6,32 @@ export const routes = [
   {
     category: {
       label: "Les déchets",
-      link: "trash",
+      link: "/trash",
       icon: TrashIcon,
     },
     themes: [
-      { label: "Station de tri", link: "order" },
-      { label: "Green Walk", link: "greenwalk" },
-      { label: "Réparer vos objets", link: "repair" },
+      { label: "Station de tri", link: "/order" },
+      { label: "Green Walk", link: "/greenwalk" },
+      { label: "Réparer vos objets", link: "/repair" },
     ],
   },
   {
     category: {
       label: "Moins polluer",
-      link: "pollution",
+      link: "/pollution",
       icon: PollutionIcon,
     },
     themes: [
-      { label: "Les vélib'", link: "bike" },
-      { label: "Les trottinettes", link: "scooter" },
+      { label: "Les vélib'", link: "/bike" },
+      { label: "Les trottinettes", link: "/scooter" },
     ],
   },
   {
     category: {
       label: "Manger responsable",
-      link: "health",
+      link: "/health",
       icon: HealthIcon,
     },
-    themes: [],
+    themes: [{ label: "Les restaurants responsable", link: "/restaurant" }],
   },
 ]

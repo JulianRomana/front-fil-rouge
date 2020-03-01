@@ -29,7 +29,9 @@ const Header = () => {
       pathname === "/home" ||
       pathname === "/dashboard" ||
       pathname === "/signup" ||
-      pathname === "/login"
+      pathname === "/login" ||
+      pathname === "/profile" ||
+      pathname === "/user-quests"
     ) {
       return "hidden"
     } else {
@@ -50,8 +52,8 @@ const Header = () => {
     cursor: pointer;
 
     img {
-      width: 1.25rem;
-      height: 1.25rem;
+      width: 20px;
+      height: 20px;
     }
   `
 
@@ -59,7 +61,7 @@ const Header = () => {
     position: relative;
     z-index: 10;
     color: ${isMenuOpened ? white : black};
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     font-weight: bold;
     text-transform: uppercase;
     visibility: ${showMenu()};

@@ -7,7 +7,6 @@ import { axiosPost } from "../lib/axios"
 import {
   Title,
   Wrapper,
-  Subtitle,
   Form,
   Signin,
   InputsWrapper,
@@ -37,7 +36,6 @@ const Signup = () => {
       <Title>
         Créer mon <br /> compte
       </Title>
-      <Subtitle>Plein de features vous attends</Subtitle>
       <Form onSubmit={submitForm}>
         <InputsWrapper>
           <Input

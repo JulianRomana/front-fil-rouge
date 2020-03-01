@@ -8,67 +8,36 @@ const OpenedMenu = styled.div`
   bottom: 0;
   right: 0;
   left: 0;
-  z-index: 10;
   display: flex;
   align-items: center;
   width: 100%;
   height: 100vh;
-  padding: 0 3.6rem;
+  padding: 0 4rem;
   background-color: ${green};
   color: ${white};
+  z-index: 10;
 `
 const ItemsContainer = styled.div`
   display: grid;
-  grid-gap: 6.4rem;
+  grid-gap: 5rem;
+  width: 100%;
 `
-const Environment = styled(Link)`
+const MenuLink = styled(Link)`
   display: flex;
-  color: ${white};
-
-  span {
-    font-size: 2.4rem;
-  }
-`
-const Profile = styled(Link)`
-  display: flex;
-  color: ${white};
-
-  span {
-    font-size: 2.4rem;
-  }
-`
-const Quests = styled(Link)`
-  display: flex;
-  color: ${white};
-
-  span {
-    font-size: 2.4rem;
-  }
+  align-items: center;
 `
 const Logout = styled.div`
   display: flex;
+  align-items: center;
   cursor: pointer;
-
-  span {
-    font-size: 2.4rem;
-  }
-`
-const Icon = styled.img``
-const ItemText = styled.span`
-  margin-left: 4.8rem;
-`
-const ItemTextLarger = styled.span`
-  margin-left: 5.6rem;
 `
 
-export {
-  OpenedMenu,
-  ItemsContainer,
-  Environment,
-  Profile,
-  Quests,
-  Logout,
-  Icon,
-  ItemText,
-  ItemTextLarger,
-}
+const Text = styled.p`
+  margin-left: 3.5rem;
+  font-size: 2.4rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: ${white};
+`
+
+export { OpenedMenu, ItemsContainer, MenuLink, Logout, Text }

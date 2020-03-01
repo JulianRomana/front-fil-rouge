@@ -11,6 +11,7 @@ import {
   InputsWrapper,
   ToSignup,
   SignUp,
+  GuestLink,
   ErrorMessage,
 } from "./pagesStyle/LoginStyle"
 
@@ -68,9 +69,10 @@ const Login = () => {
           />
         </InputsWrapper>
         <ToSignup>
-          Vous n’avez pas de compte ?<SignUp to="signup">M’inscrire</SignUp>
+          Vous n’avez pas de compte ?<SignUp to="/signup">M’inscrire</SignUp>
         </ToSignup>
         <Button onClick={onLogin} green content="Connexion" />
+        <GuestLink to="/home">Continuer en tant qu’inviter</GuestLink>
         {hasErros && (
           <ErrorMessage>Mauvais mot de passe ou pseudo !</ErrorMessage>
         )}

@@ -1,5 +1,5 @@
 import React from "react"
-import { Link } from "react-router-dom"
+import { useHistory } from "react-router-dom"
 import PropTypes from "prop-types"
 import styled from "styled-components"
 
@@ -17,31 +17,33 @@ const QuestList = ({ totalActiveQuest }) => {
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.05);
     border-radius: 1rem;
     margin-bottom: 1rem;
-    a {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      p {
-        font-weight: bold;
-      }
-      img {
-        height: 80px;
-        width: 80px;
-        object-fit: cover;
-      }
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    p {
+      font-weight: bold;
+    }
+    img {
+      height: 80px;
+      width: 80px;
+      object-fit: cover;
     }
   `
+
+  const history = useHistory()
+
+  const showQuest = quest => {
+    history.push(`/user-quests/${quest.id}`, { quest })
+  }
 
   return (
     <QuestList>
       {totalActiveQuest.length !== 0 ? (
         <>
-          {totalActiveQuest.map(({ questId }) => (
-            <Item key={questId.id}>
-              <Link to="">
-                <p>{questId.description}</p>
-                <img src={questId.picture} alt="Quest" />
-              </Link>
+          {totalActiveQuest.map(quest => (
+            <Item key={quest.questId.id} onClick={() => showQuest(quest)}>
+              <p>{quest.questId.description}</p>
+              <img src={quest.questId.picture} alt="Quest" />
             </Item>
           ))}
         </>

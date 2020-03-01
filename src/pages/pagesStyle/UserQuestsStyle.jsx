@@ -1,11 +1,10 @@
 import styled from "styled-components"
-import { green } from "../../assets/jsxStyles/Variables"
+import { green, white } from "../../assets/jsxStyles/Variables"
 
 const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 4rem 2rem;
+  padding: 7rem 2rem 2rem;
 `
 const Title = styled.h1`
   font-weight: bold;
@@ -50,6 +49,7 @@ const QuestFlatCardFinished = styled.div`
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.05);
   background-color: ${green};
   border-radius: 10px;
+  color: ${white};
 `
 const QuestTitle = styled.span`
   font-weight: bold;

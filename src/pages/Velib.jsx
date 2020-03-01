@@ -21,10 +21,10 @@ const VelibPage = () => {
       display: ${showMap ? "block" : "none"};
       position: absolute;
       content: "";
-      left: -1.5rem;
+      left: -2rem;
       background-color: ${green};
-      width: calc(100% + 3rem);
-      bottom: -1.5rem;
+      width: calc(100% + 4rem);
+      bottom: -2rem;
       height: 100vh;
       z-index: -1;
       border-radius: 0 0 3rem 3rem;
@@ -32,7 +32,7 @@ const VelibPage = () => {
   `
 
   const Container = styled.main`
-    padding: 7rem 1.5rem 2rem;
+    padding: 7rem 2rem 2rem;
   `
   const Title = styled.h1`
     text-align: left;
@@ -131,10 +131,6 @@ const VelibPage = () => {
         <Title>Moins polluer</Title>
         <SubTitle>Nombre de velibs disponible : {count}</SubTitle>
       </Header>
-      <Tips
-        title="Apprendre à faire le tri"
-        description="Remplacer les consommables jetables par des alternatives plus durables."
-      />
       <Quest>Quête(s) disponible(s)</Quest>
       <QuestList>
         {quest.map(quest => (
